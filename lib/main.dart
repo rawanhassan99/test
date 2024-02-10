@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grad_proj/pages/login.dart';
-import 'package:grad_proj/pages/signUp.dart';
+import 'package:grad_proj/pages/SignUp.dart';
 import 'package:grad_proj/pages/splashScreen.dart';
 import 'package:grad_proj/pages/welcome.dart';
 
