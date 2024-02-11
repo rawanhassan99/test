@@ -82,7 +82,7 @@ flutter:
         - asset: assets/fonts/Quando-Regular.ttf
     - family: Raleway
       fonts:
-        - asset: assets\fonts\Raleway-Bold.ttf
+        - asset: assets/fonts/Raleway-Bold.ttf
   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
