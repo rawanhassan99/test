@@ -27,12 +27,15 @@ class Login extends StatelessWidget {
               Positioned(
                 top: 15,
                 right: 15,
-                child: SvgPicture.asset(
-                  "assets/images/FixIt.svg",
-                  fit: BoxFit.cover,
-                ),
+                child: Image.asset("assets/images/FixxIt.png"),
+              
+                // child: SvgPicture.asset(
+                //   "assets/images/FixIt.svg",
+                //   fit: BoxFit.cover,
+                // ),
               ),
-              Center(          //centerd rectangle
+              Center(
+                //centerd rectangle
                 child: Stack(
                   children: [
                     SvgPicture.asset(
@@ -43,61 +46,102 @@ class Login extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
                         child: Column(
-                          
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(                     
-                              'LOGIN AS USER',
-                              style: TextStyle(
-                                fontFamily: "Quando",
-                                color: Color(0xFFBBA2BF),
-                              
-                                fontSize: 24,
+                            Transform.translate(
+                              offset: Offset(0, -10),
+                              child: Text(
+                                'LOGIN AS USER',
+                                style: TextStyle(
+                                  fontFamily: "Quando",
+                                  color: Color.fromARGB(255, 173, 148, 177),
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w300                      ),
                               ),
                             ),
-                            SizedBox(height: 16),
+                           SizedBox(height: 30),
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Email:',
+                                'User name:',
                                 style: TextStyle(
                                   fontFamily: "Quando",
+                                  fontWeight: FontWeight.bold
                                 ),
                               ),
                             ),
-                            TextField(),
-                            SizedBox(height: 16),
+                                  SizedBox(height: 7),
+                            TextField(
+                              decoration: InputDecoration(labelText: "name",
+                              //fillColor: Colors.blue[100],
+                              prefixIcon: Icon(Icons.person),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0),
+
+      
+       ),),)
+                           , SizedBox(height: 16),
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Password:',
                                 style: TextStyle(
                                   fontFamily: "Quando",
+                                  fontWeight: FontWeight.bold
                                 ),
                               ),
                             ),
+                             SizedBox(height: 7),
                             TextField(
                               obscureText: true,
-                            ),
-                            SizedBox(height: 16),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Or Login with ',
-                                style: TextStyle(
-                                  fontFamily: "Raleway",
+                             decoration: InputDecoration(
+                              labelText: "password",
+                              //fillColor: Colors.blue[100],
+                              prefixIcon: Icon(Icons.password),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0),
+
+      
+       ),
+                             // errorText: "Password must be at least 8 characters.") ,
+                            )),
+                            SizedBox(height: 40),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Or Login with ',
+                                  style: TextStyle(
+                                    fontFamily: "Raleway",
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold
+                                  ),
                                 ),
-                              ),
+                                SvgPicture.asset(
+                                  'assets/images/facebook.svg',
+                                  width: 30,
+                                  height: 30,
+                                  color: Color.fromARGB(255, 173, 148, 177),
+                                ),
+                                SvgPicture.asset(
+                                  'assets/images/google.svg',
+                                  width: 30,
+                                  height: 30,
+                                  color: Color.fromARGB(255, 173, 148, 177),
+                                )
+                              ],
                             ),
+                            SizedBox(height:5,),
                             ElevatedButton(
                               onPressed: () {
                                 // Navigator.pushNamed(context, "/signup");
                               },
                               style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Color(0xFFBBA2BF)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFFBBA2BF)),
                                 padding: MaterialStateProperty.all(
-                                  EdgeInsets.symmetric(horizontal: 77, vertical: 13),
+                                  EdgeInsets.symmetric(
+                                      horizontal: 77, vertical: 13),
                                 ),
                                 shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(
@@ -121,13 +165,28 @@ class Login extends StatelessWidget {
                                   'Don\'t have an account? ',
                                   style: TextStyle(
                                     fontFamily: "Raleway",
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                  
                                   ),
                                 ),
-                                Text(
-                                  'Sign up ',
-                                  style: TextStyle(
-                                    fontFamily: "Raleway",
-                                    color: Color(0xFFBBA2BF),
+                                InkWell(
+                                  onTap: () {
+                                    // Navigator.pushNamed(context, "/signup");
+                                  },
+                                  child: Text(
+                                    'Sign up',
+                                    style: TextStyle(
+                                      fontFamily: "Raleway",
+                                      color: Color.fromARGB(255, 173, 148, 177),
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline
+                                     
+                                      
+                                      
+                                      
+                                    ),
                                   ),
                                 ),
                               ],
