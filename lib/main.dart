@@ -3,6 +3,7 @@ import 'package:grad_proj/pages/login.dart';
 import 'package:grad_proj/pages/SignUp.dart';
 import 'package:grad_proj/pages/splashScreen.dart';
 import 'package:grad_proj/pages/welcome.dart';
+import 'package:grad_proj/pages/workerslist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => const SplashScreen(),
          "/welcome": (context) => const Welcome(),
          "/login": (context) => const Login(),
-          "/signUp": (context) => const SignUp(),
+          "/signup": (context) => const SignUp(),
+          "/workerslist": (context) =>  WorkersList(),
            
       },
     );
