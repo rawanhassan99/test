@@ -132,7 +132,7 @@ class WorkersList extends StatelessWidget {
                       return Column(
                         children: [
                           Container(
-                            height: 150,
+                            height: 140,
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Color.fromARGB(31, 125, 124, 124),
@@ -238,15 +238,7 @@ class WorkersList extends StatelessWidget {
                   //nav bar
 
                 )
-  //              ,Container(
-  //   decoration: BoxDecoration(
-  //     border: Border.all(
-  //       color: Colors.white, // Adjust border color
-  //       width: 2.0, // Adjust border width
-  //     ),
-  //     child: Icon(Icons.home, size: 30, color: Colors.white),
-  //   ),
-  // ),
+  
               
 
               ]
