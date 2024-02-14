@@ -256,7 +256,7 @@ class WorkersList extends StatelessWidget {
               ),
               bottomNavigationBar: Container(
                 child: CurvedNavigationBar(items: [
-                  Icon(Icons.home,size: 35,color: Colors.white,),
+                  Icon(Icons.home,size: 35,color: Color(0xFFE9E9E9,),),
                   Icon(Icons.favorite,size: 35,color: Colors.white,),
                   Icon(Icons.support_agent,size: 35,color: Colors.white,),
                   Icon(Icons.notifications,size: 35,color:  Colors.white,),
