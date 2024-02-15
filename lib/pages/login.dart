@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class Login extends StatelessWidget {
   const Login({Key? key});
 
@@ -50,9 +49,17 @@ class Login extends StatelessWidget {
                 //centerd rectangle
                 child: Stack(
                   children: [
-                    SvgPicture.asset(
-                      "assets/images/Rec that Contain Categories.svg",
-                      fit: BoxFit.cover,
+                    Container(
+                      width: 316,
+                      height: 440,
+                      decoration: BoxDecoration(
+                        color:  Color(0xFFF5F3F3), // Replace with your desired color
+                        borderRadius: BorderRadius.circular(20.0),
+                        border: Border.all(
+                          color: Colors.black26,
+                          width: 2
+                        )
+                      ),
                     ),
                     Positioned.fill(
                       child: Padding(

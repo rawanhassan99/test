@@ -9,7 +9,7 @@ void main() {
   runApp(const MyApp());
 
 }
-
+// Color(0xFFBBA2BF)
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/workerslist" ,
+      initialRoute: "/login" ,
       routes: {
         "/": (context) => const SplashScreen(),
          "/welcome": (context) => const Welcome(),
