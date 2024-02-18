@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:grad_proj/pages/HomeScreen.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:grad_proj/pages/workerInfo.dart';
 
 class WorkersList extends StatefulWidget {
   WorkersList({Key? key}) : super(key: key);
@@ -20,16 +22,16 @@ class _WorkersListState extends State<WorkersList> {
       "name": "Mohamed Ahmed",
       "Type": "Air Conditioning Maintenance",
       "pic": "assets/images/profile.png",
-      "Rating": "",
       "Number": "0123456",
       "Description": "skilled and professional technician",
-      "Review": ""
+      "Review": "",
+      "Rating": 4.4
     },
     {
       "name": "Nagy Ahmed",
       "Type": "Refrigerator Maintenance",
       "pic": "assets/images/profile.png",
-      "Rating": "",
+      "Rating": 5.0,
       "Number": "1237568",
       "Description": "",
       "Review": ""
@@ -38,7 +40,7 @@ class _WorkersListState extends State<WorkersList> {
       "name": "Mohamed Ahmed",
       "Type": "Air Conditioning Maintenance",
       "pic": "assets/images/profile.png",
-      "Rating": "",
+      "Rating": 2.9,
       "Number": "0123456",
       "Description": "skilled and professional technician",
       "Review": ""
@@ -47,7 +49,7 @@ class _WorkersListState extends State<WorkersList> {
       "name": "Mohamed Ahmed",
       "Type": "Air Conditioning Maintenance",
       "pic": "assets/images/profile.png",
-      "Rating": "",
+      "Rating": 2.5,
       "Number": "0123456",
       "Description": "skilled and professional technician",
       "Review": ""
@@ -81,7 +83,8 @@ class _WorkersListState extends State<WorkersList> {
               ),
               //Menu button
               Positioned(
-                top: 13,
+                left: 3,
+                top: 9,
                 child: IconButton(
                     onPressed: () {
                       // Navigator.pushNamed(context, "/signup");
@@ -103,22 +106,21 @@ class _WorkersListState extends State<WorkersList> {
               ),
 
               //search input
+
               Padding(
                 padding: EdgeInsets.only(top: 90.0, right: 30, left: 30),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: "Search technican name",
+                    labelText: "Search technician name",
                     contentPadding: EdgeInsets.zero,
                     prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        // Specify your desired color here
-                      ),
+                      borderSide: BorderSide.none, // Remove the border side
                     ),
+                    filled: true, // Set filled to true
+                    fillColor: Colors.white, // Set the fill color to white
                   ),
-                  // TextField properties here
                 ),
               ),
               //profile pic
@@ -136,116 +138,149 @@ class _WorkersListState extends State<WorkersList> {
               //Workers List
               Positioned(
                 top: 180,
-                right: 0,
-                left: 0,
+                right: 5,
+                left: 5,
                 bottom: 0,
+
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
                   itemCount: worker.length,
                   itemBuilder: (context, itemCount) {
-                    return Column(
-                      children: [
-                        Container(
-                          height: 140,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(31, 125, 124, 124),
-                            borderRadius: BorderRadius.circular(20.0),
-                            border: Border.all(
-                              color: Colors.black26,
-                              width: 2.0,
-                            ),
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(31, 125, 124, 124),
+                          borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(
+                            color: Colors.black26,
+                            width: 2.0,
                           ),
-                          //photo and worker info
-                          child: Row(
+                        ),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.all(2),
+                          leading: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                              ),
-
-                              CircleAvatar(
-                                radius: 35,
-                                backgroundImage:
-                                    AssetImage('assets/images/profile.png'),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ), // Add spacing between avatar and text
-                              Expanded(
-                                //info about worker
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      worker[itemCount]['name'],
-                                      style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: "Raleway",
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      worker[itemCount]['Type'],
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: "Raleway",
-                                        color: Colors.black87,
-                                      ),
-                                    ),
-                                    Text(
-                                      worker[itemCount]['Number'],
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: "Raleway",
-                                        color: Colors.black87,
-                                      ),
-                                    ),
-                                    SizedBox(height: 10),
-                                    //button
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: ElevatedButton(
-                                        onPressed: () {},
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  Color(0xFFBBA2BF)),
-                                          padding: MaterialStateProperty.all(
-                                            EdgeInsets.symmetric(
-                                                horizontal: 50, vertical: 5),
-                                          ),
-                                          shape: MaterialStateProperty.all(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(27),
-                                            ),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          "Details",
-                                          style: TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                              //profile
+                              Container(
+                                width: 65,
+                                height: 55,
+                                child: CircleAvatar(
+                                  radius: 60,
+                                  backgroundImage:
+                                      AssetImage('assets/images/profile.png'),
                                 ),
                               ),
                             ],
                           ),
+                          //name
+                          title: Text(
+                            worker[itemCount]['name'],
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Raleway",
+                              color: Colors.black,
+                            ),
+                          ),
+                          //info and button
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                worker[itemCount]['Type'],
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: "Raleway",
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    worker[itemCount]['Number'],
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: "Raleway",
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  SizedBox(width: 60),
+                                  RatingBar.builder(
+                                    initialRating: worker[itemCount]['Rating'],
+                                    minRating: 1,
+                                    maxRating: 5,
+                                    direction: Axis.horizontal,
+                                    allowHalfRating: true,
+                                    unratedColor: Colors.grey,
+                                    itemCount: 5,
+                                    itemSize: 20.0,
+                                    itemPadding:
+                                        EdgeInsets.symmetric(horizontal: 1.0),
+                                    itemBuilder: (context, _) => Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                    onRatingUpdate: (rating) {
+                                      print(rating);
+                                    },
+                                  ),
+                                ],
+                              ),
+                              // Row(
+                              //   children: [
+
+                              // Text(
+                              //   worker[itemCount]['Rating'].toString(),
+                              //   style: TextStyle(
+                              //     fontSize: 16,
+                              //     fontFamily: "Raleway",
+                              //     color: Colors.black87,
+                              //   ),
+                              // ),
+                              //   ],
+                              // ),
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      //      Navigator.push(
+                                      //context,
+                                      //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
+                                      // );
+                                    },
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Color(0xFFBBA2BF)),
+                                      padding: MaterialStateProperty.all(
+                                        EdgeInsets.symmetric(
+                                            horizontal: 50, vertical: 5),
+                                      ),
+                                      shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(27),
+                                        ),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      "Details",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 5,
-                        )
-                      ],
+                      ),
                     );
                   },
                 ),
@@ -298,4 +333,13 @@ class _WorkersListState extends State<WorkersList> {
       ),
     );
   }
+
+//   class WorkerInfo extends StatelessWidget {
+//   const WorkerInfo({Key? key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea();
+
+// }
 }

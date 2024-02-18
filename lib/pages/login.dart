@@ -50,8 +50,8 @@ class Login extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
-                      width: 316,
-                      height: 440,
+                      width: 320,
+                      height: 500,
                       decoration: BoxDecoration(
                         color:  Color(0xFFF5F3F3), // Replace with your desired color
                         borderRadius: BorderRadius.circular(20.0),
@@ -60,8 +60,7 @@ class Login extends StatelessWidget {
                           width: 2
                         )
                       ),
-                    ),
-                    Positioned.fill(
+                                          
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
                         child: Column(
@@ -207,6 +206,9 @@ class Login extends StatelessWidget {
                         ),
                       ),
                     ),
+                 
+                 
+
                   ],
                 ),
               ),
