@@ -90,7 +90,7 @@ class _WorkersListState extends State<WorkersList> {
                       // Navigator.pushNamed(context, "/signup");
                     },
                     icon: Icon(
-                      Icons.menu,
+                      Icons.arrow_back,
                       color: Colors.white,
                       size: 40,
                     )),
@@ -293,9 +293,11 @@ class _WorkersListState extends State<WorkersList> {
             Icon(
               Icons.home,
               size: 35,
+              
               color: Color(
                 0xFFE9E9E9,
               ),
+              
             ),
             Icon(
               Icons.favorite,
@@ -330,6 +332,7 @@ class _WorkersListState extends State<WorkersList> {
           },
           index: _currentIndex,
         ),
+      
       ),
     );
   }
