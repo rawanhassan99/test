@@ -7,14 +7,14 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/pages/workerInfo.dart';
 
-class WorkersList extends StatefulWidget {
-  WorkersList({Key? key}) : super(key: key);
+class History extends StatefulWidget {
+  History({Key? key}) : super(key: key);
 
   @override
-  _WorkersListState createState() => _WorkersListState();
+  _HistoryState createState() => _HistoryState();
 }
 
-class _WorkersListState extends State<WorkersList> {
+class _HistoryState extends State<History> {
   int _currentIndex = 0;
   //const WorkersList({Key? key});
   List worker = [
@@ -71,13 +71,13 @@ class _WorkersListState extends State<WorkersList> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-              //purple foreground
+            //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile.svg",
+                  "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -105,24 +105,6 @@ class _WorkersListState extends State<WorkersList> {
                 ),
               ),
 
-              //search input
-
-              Padding(
-                padding: EdgeInsets.only(top: 90.0, right: 30, left: 30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: "Search technician name",
-                    contentPadding: EdgeInsets.zero,
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide.none, // Remove the border side
-                    ),
-                    filled: true, // Set filled to true
-                    fillColor: Colors.white, // Set the fill color to white
-                  ),
-                ),
-              ),
               //profile pic
               Positioned(
                 right: 15,
@@ -132,8 +114,29 @@ class _WorkersListState extends State<WorkersList> {
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
+
               SizedBox(
                 height: 35,
+              ),
+              Positioned(
+                top: 130,
+                left: 6,
+                child: Text(
+                  "Previous Requests:",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Raleway",
+                    color: Colors.black,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black12,
+                        offset: Offset(2, 2),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                ),
               ),
               //Workers List
               Positioned(

@@ -3,18 +3,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-//import 'package:grad_proj/pages/HomeScreen.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/pages/workerInfo.dart';
 
-class WorkersList extends StatefulWidget {
-  WorkersList({Key? key}) : super(key: key);
+class Favorites extends StatefulWidget {
+  Favorites({Key? key}) : super(key: key);
 
   @override
-  _WorkersListState createState() => _WorkersListState();
+  _FavoritesState createState() => _FavoritesState();
 }
 
-class _WorkersListState extends State<WorkersList> {
+class _FavoritesState extends State<Favorites> {
   int _currentIndex = 0;
   //const WorkersList({Key? key});
   List worker = [
@@ -36,24 +35,6 @@ class _WorkersListState extends State<WorkersList> {
       "Description": "",
       "Review": ""
     },
-    {
-      "name": "Mohamed Ahmed",
-      "Type": "Air Conditioning Maintenance",
-      "pic": "assets/images/profile.png",
-      "Rating": 2.9,
-      "Number": "0123456",
-      "Description": "skilled and professional technician",
-      "Review": ""
-    },
-    {
-      "name": "Mohamed Ahmed",
-      "Type": "Air Conditioning Maintenance",
-      "pic": "assets/images/profile.png",
-      "Rating": 2.5,
-      "Number": "0123456",
-      "Description": "skilled and professional technician",
-      "Review": ""
-    },
   ];
   final List<Widget> pages = [
     //HomeScreen(),
@@ -71,7 +52,7 @@ class _WorkersListState extends State<WorkersList> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-              //purple foreground
+     //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
@@ -132,16 +113,19 @@ class _WorkersListState extends State<WorkersList> {
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
+             
               SizedBox(
                 height: 35,
               ),
+             
+            
+
               //Workers List
               Positioned(
                 top: 180,
                 right: 5,
                 left: 5,
                 bottom: 0,
-
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
@@ -158,7 +142,7 @@ class _WorkersListState extends State<WorkersList> {
                             width: 2.0,
                           ),
                         ),
-                        child: ListTile(
+                        child:  ListTile(
                           contentPadding: EdgeInsets.all(2),
                           leading: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +159,13 @@ class _WorkersListState extends State<WorkersList> {
                               ),
                             ],
                           ),
-                          //name
+                      
+                         trailing: 
+                         IconButton(onPressed: (){},
+                          icon: Icon( Icons.favorite,
+                      color: Color(0xFFBBA2BF),
+                      size: 25,)),
+                          //name 
                           title: Text(
                             worker[itemCount]['name'],
                             style: TextStyle(
@@ -192,7 +182,7 @@ class _WorkersListState extends State<WorkersList> {
                               Text(
                                 worker[itemCount]['Type'],
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 15.5,
                                   fontFamily: "Raleway",
                                   color: Colors.black87,
                                 ),
@@ -207,7 +197,7 @@ class _WorkersListState extends State<WorkersList> {
                                       color: Colors.black87,
                                     ),
                                   ),
-                                  SizedBox(width: 60),
+                                  SizedBox(width: 40),
                                   RatingBar.builder(
                                     initialRating: worker[itemCount]['Rating'],
                                     minRating: 1,
@@ -227,6 +217,8 @@ class _WorkersListState extends State<WorkersList> {
                                       print(rating);
                                     },
                                   ),
+                      
+                               
                                 ],
                               ),
                               // Row(
@@ -284,7 +276,6 @@ class _WorkersListState extends State<WorkersList> {
                     );
                   },
                 ),
-                //nav bar
               )
             ])),
         //nav bar
