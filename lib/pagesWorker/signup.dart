@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SignUpUser extends StatelessWidget {
-  const SignUpUser({Key? key});
+class SignUpWorker extends StatelessWidget {
+  const SignUpWorker({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +77,11 @@ class SignUpUser extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Sign Up AS USER',
+                          'Sign Up AS WORKER',
                           style: TextStyle(
                             fontFamily: "Quando",
                             color: Color.fromARGB(255, 173, 148, 177),
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: FontWeight.w300,
                           ),
                         ),

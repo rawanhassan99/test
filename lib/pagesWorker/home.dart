@@ -6,33 +6,31 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/pages/workerInfo.dart';
 
-class Favorites extends StatefulWidget {
-  Favorites({Key? key}) : super(key: key);
+class HomeWoker extends StatefulWidget {
+  HomeWoker({Key? key}) : super(key: key);
 
   @override
-  _FavoritesState createState() => _FavoritesState();
+  _HomeWokerState createState() => _HomeWokerState();
 }
 
-class _FavoritesState extends State<Favorites> {
+class _HomeWokerState extends State<HomeWoker> {
   int _currentIndex = 0;
   //const WorkersList({Key? key});
   List worker = [
     {
-      "name": "Mohamed Ahmed",
-      "Type": "Air Conditioning Maintenance",
+      "name": "Dina Ahmed",
       "pic": "assets/images/profile.png",
       "Number": "0123456",
-      "Description": "skilled and professional technician",
+      "emergency": false,
       "Review": "",
       "Rating": 4.4
     },
     {
-      "name": "Nagy Ahmed",
-      "Type": "Refrigerator Maintenance",
+      "name": "Hany Ahmed",
+      "emergency": true,
       "pic": "assets/images/profile.png",
       "Rating": 5.0,
       "Number": "1237568",
-      "Description": "",
       "Review": ""
     },
   ];
@@ -52,13 +50,13 @@ class _FavoritesState extends State<Favorites> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-     //purple foreground
+              //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile.svg",
+                  "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -86,24 +84,6 @@ class _FavoritesState extends State<Favorites> {
                 ),
               ),
 
-              //search input
-
-              Padding(
-                padding: EdgeInsets.only(top: 90.0, right: 30, left: 30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: "Search technician name",
-                    contentPadding: EdgeInsets.zero,
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide.none, // Remove the border side
-                    ),
-                    filled: true, // Set filled to true
-                    fillColor: Colors.white, // Set the fill color to white
-                  ),
-                ),
-              ),
               //profile pic
               Positioned(
                 right: 15,
@@ -113,16 +93,68 @@ class _FavoritesState extends State<Favorites> {
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
-             
-              SizedBox(
-                height: 35,
+
+              // SizedBox(
+              //   height: 35,
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 88),
+                child: Container(
+                   padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(31, 125, 124, 124),
+                    borderRadius: BorderRadius.circular(20.0),
+                    border: Border.all(
+                      color: Colors.black26,
+                      width: 2.0,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset("assets/images/Siren.png"),
+                      
+                       SizedBox(width: 7,),
+                         Text(
+                          "For Emergency",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Raleway",
+                            color: Colors.black,
+                          ),
+                        ),
+                   
+                    ],
+                  ),
+                ),
               ),
-             
-            
+              //Text
+              Positioned(
+                top: 140,
+                left: 6,
+                child: Text(
+                  "Today Requests:",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Raleway",
+                    color: Colors.black,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black12,
+                        offset: Offset(2, 2),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
 
               //Workers List
               Positioned(
-                top: 180,
+                top: 190,
                 right: 5,
                 left: 5,
                 bottom: 0,
@@ -142,12 +174,12 @@ class _FavoritesState extends State<Favorites> {
                             width: 2.0,
                           ),
                         ),
-                        child:  ListTile(
+                        child: ListTile(
                           contentPadding: EdgeInsets.all(2),
                           leading: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              //profile
+                              // Profile
                               Container(
                                 width: 65,
                                 height: 55,
@@ -159,13 +191,7 @@ class _FavoritesState extends State<Favorites> {
                               ),
                             ],
                           ),
-                      //favorite icon
-                         trailing: 
-                         IconButton(onPressed: (){},
-                          icon: Icon( Icons.favorite,
-                      color: Color(0xFFBBA2BF),
-                      size: 25,)),
-                          //name 
+                          // Name
                           title: Text(
                             worker[itemCount]['name'],
                             style: TextStyle(
@@ -175,15 +201,16 @@ class _FavoritesState extends State<Favorites> {
                               color: Colors.black,
                             ),
                           ),
-                          //info and button
+                          // Info and button
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                worker[itemCount]['Type'],
+                                "Expected Commission fee: 300",
                                 style: TextStyle(
-                                  fontSize: 15.5,
-                                  fontFamily: "Raleway",
+                                  fontSize: 15,
+                                  fontFamily: "Quantico",
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.black87,
                                 ),
                               ),
@@ -193,7 +220,7 @@ class _FavoritesState extends State<Favorites> {
                                     worker[itemCount]['Number'],
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontFamily: "Raleway",
+                                      fontFamily: "Quantico",
                                       color: Colors.black87,
                                     ),
                                   ),
@@ -217,31 +244,16 @@ class _FavoritesState extends State<Favorites> {
                                       print(rating);
                                     },
                                   ),
-                      
-                               
                                 ],
                               ),
-                              // Row(
-                              //   children: [
-
-                              // Text(
-                              //   worker[itemCount]['Rating'].toString(),
-                              //   style: TextStyle(
-                              //     fontSize: 16,
-                              //     fontFamily: "Raleway",
-                              //     color: Colors.black87,
-                              //   ),
-                              // ),
-                              //   ],
-                              // ),
                               Align(
                                 alignment: Alignment.center,
                                 child: Container(
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      //      Navigator.push(
-                                      //context,
-                                      //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount)),
                                       // );
                                     },
                                     style: ButtonStyle(
@@ -271,6 +283,15 @@ class _FavoritesState extends State<Favorites> {
                               )
                             ],
                           ),
+                          trailing: worker[itemCount]['emergency'] == true
+                              //if it's true do that
+                              ? Padding(
+                                  padding: EdgeInsets.only(
+                                      right: 8), // Adjust the margin as needed
+                                  child: Image.asset("assets/images/Siren.png"),
+                                )
+                              //if false do null
+                              : null,
                         ),
                       ),
                     );
@@ -287,11 +308,6 @@ class _FavoritesState extends State<Favorites> {
               color: Color(
                 0xFFE9E9E9,
               ),
-            ),
-            Icon(
-              Icons.favorite,
-              size: 35,
-              color: Colors.white,
             ),
             Icon(
               Icons.support_agent,
@@ -324,13 +340,4 @@ class _FavoritesState extends State<Favorites> {
       ),
     );
   }
-
-//   class WorkerInfo extends StatelessWidget {
-//   const WorkerInfo({Key? key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea();
-
-// }
 }

@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grad_proj/pages/signup.dart';
+import 'package:grad_proj/pagesWorker/signup.dart';
 
-class SignUpUser extends StatelessWidget {
-  const SignUpUser({Key? key});
+class LoginWorker extends StatelessWidget {
+  const LoginWorker({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,31 +17,17 @@ class SignUpUser extends StatelessWidget {
           height: double.infinity,
           child: Stack(
             children: [
+              // Background Image
               //purple foreground
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile1.svg",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              //Menu button
-              Positioned(
-                left: 3,
-                top: 9,
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                      size: 40,
-                    )),
-              ),
-
+Positioned(
+top: 0,
+right: 0,
+left: 0,
+child: SvgPicture.asset(
+"assets/images/Rec that Contain menu icon &profile1.svg",
+fit: BoxFit.cover,
+),
+),
               // App Title
               Positioned(
                 top: 15,
@@ -77,15 +65,15 @@ class SignUpUser extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Sign Up AS USER',
+                          'LOGIN AS WORKER',
                           style: TextStyle(
                             fontFamily: "Quando",
                             color: Color.fromARGB(255, 173, 148, 177),
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 30),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -130,30 +118,33 @@ class SignUpUser extends StatelessWidget {
                             contentPadding: EdgeInsets.symmetric(vertical: 12),
                           ),
                         ),
-                        SizedBox(height: 16),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Confirm Password:',
-                            style: TextStyle(
-                              fontFamily: "Quando",
-                              fontWeight: FontWeight.bold,
+                        SizedBox(height: 40),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Or Login with ',
+                              style: TextStyle(
+                                fontFamily: "Raleway",
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            labelText: "Confirm Password",
-                            prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                            SvgPicture.asset(
+                              'assets/images/facebook.svg',
+                              width: 30,
+                              height: 30,
+                              color: Color.fromARGB(255, 173, 148, 177),
                             ),
-                            contentPadding: EdgeInsets.symmetric(vertical: 12),
-                          ),
+                            SvgPicture.asset(
+                              'assets/images/google.svg',
+                              width: 30,
+                              height: 30,
+                              color: Color.fromARGB(255, 173, 148, 177),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 5),
                         ElevatedButton(
                           onPressed: () {
                             // Perform login logic here
@@ -176,29 +167,32 @@ class SignUpUser extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Or Sign up with ',
+                              'Don\'t have an account? ',
                               style: TextStyle(
                                 fontFamily: "Raleway",
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SvgPicture.asset(
-                              'assets/images/facebook.svg',
-                              width: 30,
-                              height: 30,
-                              color: Color.fromARGB(255, 173, 148, 177),
-                            ),
-                            SvgPicture.asset(
-                              'assets/images/google.svg',
-                              width: 30,
-                              height: 30,
-                              color: Color.fromARGB(255, 173, 148, 177),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpWorker()),);
+                              },
+                              child: Text(
+                                'Sign up',
+                                style: TextStyle(
+                                  fontFamily: "Raleway",
+                                  color: Color.fromARGB(255, 173, 148,177),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
                             ),
                           ],
                         ),

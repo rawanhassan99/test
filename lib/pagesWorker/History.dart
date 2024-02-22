@@ -1,22 +1,19 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:grad_proj/pages/workerInfo.dart';
 
-class Responds extends StatefulWidget {
-  Responds({Key? key}) : super(key: key);
-
+class HistoryWorker extends StatefulWidget {
   @override
-  _RespondsState createState() => _RespondsState();
+  _HistoryWorkerState createState() => _HistoryWorkerState();
 }
 
-class _RespondsState extends State<Responds> {
+class _HistoryWorkerState extends State<HistoryWorker> {
   int _currentIndex = 0;
-  //const WorkersList({Key? key});
-  List worker = [
+
+  List<Map<String, dynamic>> worker = [
     {
       "name": "Mohamed Ahmed",
       "Type": "Air Conditioning Maintenance",
@@ -24,7 +21,8 @@ class _RespondsState extends State<Responds> {
       "Number": "0123456",
       "Description": "skilled and professional technician",
       "Review": "",
-      "Rating": 4.4
+      "Rating": 4.4,
+      "Date": DateTime(2024, 12, 31),
     },
     {
       "name": "Nagy Ahmed",
@@ -33,25 +31,52 @@ class _RespondsState extends State<Responds> {
       "Rating": 5.0,
       "Number": "1237568",
       "Description": "",
-      "Review": ""
+      "Review": "",
+      "Date": DateTime(2024, 2, 15),
+    },
+    {
+      "name": "Ziad Ahmed",
+      "Type": "Refrigerator Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 5.0,
+      "Number": "1237568",
+      "Description": "",
+      "Review": "",
+      "Date": DateTime(2024, 1, 10),
     },
   ];
-  final List<Widget> pages = [
-    //HomeScreen(),
-    // FavoriteScreen(),
-    // SupportAgentScreen(),
-    // NotificationsScreen(),
-    // SocialMediaScreen(),
-  ];
+
+  //returns a list of maps, where each map has string keys and dynamic values.
+  List<Map<String, dynamic>> getRecentWorkers() {
+    //to get current date
+    DateTime today = DateTime.now();
+    //The where method filters the list based on a given condition
+    return worker.where((w) {
+      DateTime appointmentDate = w['Date'];
+      return appointmentDate.isAfter(today);
+    }).toList();
+  }
+
+  List<Map<String, dynamic>> getPreviousRequests() {
+    DateTime today = DateTime.now();
+    return worker.where((w) {
+      DateTime appointmentDate = w['Date'];
+      return appointmentDate.isBefore(today);
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> recentWorkers = getRecentWorkers();
+    List<Map<String, dynamic>> previousRequests = getPreviousRequests();
+
     return SafeArea(
       child: Scaffold(
         body: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: Stack(children: [
+          width: double.infinity,
+          height: double.infinity,
+          child: Stack(
+            children: [
               //purple foreground
               Positioned(
                 top: 0,
@@ -71,7 +96,7 @@ class _RespondsState extends State<Responds> {
                       // Navigator.pushNamed(context, "/signup");
                     },
                     icon: Icon(
-                      Icons.arrow_back,
+                      Icons.menu,
                       color: Colors.white,
                       size: 40,
                     )),
@@ -99,12 +124,13 @@ class _RespondsState extends State<Responds> {
               SizedBox(
                 height: 35,
               ),
-              //text
+
+              //text recent
               Positioned(
-                top: 130,
+                top: 145,
                 left: 6,
                 child: Text(
-                  "Select one from responds:",
+                  "Recent:",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -121,7 +147,7 @@ class _RespondsState extends State<Responds> {
                 ),
               ),
 
-              //Workers List
+              //Recent Workers List
               Positioned(
                 top: 180,
                 right: 5,
@@ -130,8 +156,10 @@ class _RespondsState extends State<Responds> {
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
-                  itemCount: worker.length,
+                  itemCount: recentWorkers.length,
                   itemBuilder: (context, itemCount) {
+                    Map<String, dynamic> currentWorker =
+                        recentWorkers[itemCount];
                     return Padding(
                       padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
                       child: Container(
@@ -162,7 +190,7 @@ class _RespondsState extends State<Responds> {
                           ),
                           //name
                           title: Text(
-                            worker[itemCount]['name'],
+                            currentWorker['name'],
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w500,
@@ -175,7 +203,7 @@ class _RespondsState extends State<Responds> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                // worker[itemCount]['Type'],
+                                // currentWorker[itemCount]['Type'],
                                 "Expected: 300 Egyptian Pound",
                                 style: TextStyle(
                                   fontSize: 15,
@@ -187,7 +215,7 @@ class _RespondsState extends State<Responds> {
                               Row(
                                 children: [
                                   Text(
-                                    worker[itemCount]['Number'],
+                                    currentWorker['Number'],
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontFamily: "Quantico",
@@ -196,7 +224,7 @@ class _RespondsState extends State<Responds> {
                                   ),
                                   SizedBox(width: 60),
                                   RatingBar.builder(
-                                    initialRating: worker[itemCount]['Rating'],
+                                    initialRating: currentWorker['Rating'],
                                     minRating: 1,
                                     maxRating: 5,
                                     direction: Axis.horizontal,
@@ -271,8 +299,186 @@ class _RespondsState extends State<Responds> {
                     );
                   },
                 ),
-              )
-            ])),
+              ),
+
+              //text
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.5,
+                left: 6,
+                child: Text(
+                  "Previous Requests:",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Raleway",
+                    color: Colors.black,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black12,
+                        offset: Offset(2, 2),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              //Previous Requests List
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.55,
+                right: 5,
+                left: 5,
+                bottom: 0,
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  itemCount: previousRequests.length,
+                  itemBuilder: (context, itemCount) {
+                    Map<String, dynamic> currentRequest =
+                        previousRequests[itemCount];
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(31, 125, 124, 124),
+                          borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(
+                            color: Colors.black26,
+                            width: 2.0,
+                          ),
+                        ),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.all(2),
+                          leading: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              //profile
+                              Container(
+                                width: 65,
+                                height: 55,
+                                child: CircleAvatar(
+                                  radius: 60,
+                                  backgroundImage:
+                                      AssetImage('assets/images/profile.png'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          //name
+                          title: Text(
+                            currentRequest['name'],
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Raleway",
+                              color: Colors.black,
+                            ),
+                          ),
+                          //info and button
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                // currentWorker[itemCount]['Type'],
+                                "Expected: 300 Egyptian Pound",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: "Quantico",
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    currentRequest['Number'],
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: "Quantico",
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  SizedBox(width: 60),
+                                  RatingBar.builder(
+                                    initialRating: currentRequest['Rating'],
+                                    minRating: 1,
+                                    maxRating: 5,
+                                    direction: Axis.horizontal,
+                                    allowHalfRating: true,
+                                    unratedColor: Colors.grey,
+                                    itemCount: 5,
+                                    itemSize: 20.0,
+                                    itemPadding:
+                                        EdgeInsets.symmetric(horizontal: 1.0),
+                                    itemBuilder: (context, _) => Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                    onRatingUpdate: (rating) {
+                                      print(rating);
+                                    },
+                                  ),
+                                ],
+                              ),
+                              // Row(
+                              //   children: [
+
+                              // Text(
+                              //   worker[itemCount]['Rating'].toString(),
+                              //   style: TextStyle(
+                              //     fontSize: 16,
+                              //     fontFamily: "Raleway",
+                              //     color: Colors.black87,
+                              //   ),
+                              // ),
+                              //   ],
+                              // ),
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      //      Navigator.push(
+                                      //context,
+                                      //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
+                                      // );
+                                    },
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Color(0xFFBBA2BF)),
+                                      padding: MaterialStateProperty.all(
+                                        EdgeInsets.symmetric(
+                                            horizontal: 50, vertical: 5),
+                                      ),
+                                      shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(27),
+                                        ),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      "Details",
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
         //nav bar
         bottomNavigationBar: CurvedNavigationBar(
           items: [
@@ -283,11 +489,7 @@ class _RespondsState extends State<Responds> {
                 0xFFE9E9E9,
               ),
             ),
-            Icon(
-              Icons.favorite,
-              size: 35,
-              color: Colors.white,
-            ),
+           
             Icon(
               Icons.support_agent,
               size: 35,
@@ -319,13 +521,4 @@ class _RespondsState extends State<Responds> {
       ),
     );
   }
-
-//   class WorkerInfo extends StatelessWidget {
-//   const WorkerInfo({Key? key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea();
-
-// }
 }

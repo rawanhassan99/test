@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:grad_proj/pages/emergencyResponds.dart';
 //import 'package:grad_proj/pages/curved_navigation_bar.dart';
 import 'package:grad_proj/pages/favorites.dart';
 import 'package:grad_proj/pages/history.dart';
 import 'package:grad_proj/pages/login.dart';
-import 'package:grad_proj/pages/SignUp.dart';
+
 import 'package:grad_proj/pages/responds.dart';
-//import 'package:grad_proj/pages/splashScreen.dart';
-import 'package:grad_proj/pages/welcome.dart';
-//import 'package:grad_proj/pages/workerInfo.dart';
+import 'package:grad_proj/pages/signup.dart';
+
 import 'package:grad_proj/pages/workerslist.dart';
+import 'package:grad_proj/pagesWorker/History.dart';
+import 'package:grad_proj/pagesWorker/home.dart';
+import 'package:grad_proj/pagesWorker/login.dart';
+import 'package:grad_proj/pagesWorker/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,17 +26,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/workerslist",
+      initialRoute: "/loginworker",
       routes: {
-     //   "/": (context) => const SplashScreen(),
-       // "/welcome": (context) => const Welcome(),
+     
         "/login": (context) => const Login(),
-        "/signup": (context) => const SignUp(),
+       
         "/workerslist": (context) => WorkersList(),
-        //"/workerInfo": (context) =>  WorkerInfo(),
+      
         "/responds": (context) => Responds(),
         "/favorites": (context) => Favorites(),
         "/history": (context) => History(),
+         "/emergencyresponse": (context) => EmergencyResponds(),
+         "/homeworker": (context) => HomeWoker(),
+          "/historyworker": (context) => HistoryWorker(),
+          "/signup": (context) => SignUpUser(),
+             "/loginworker": (context) => LoginWorker(),
+              // "/signupworker": (context) => SignUpWorker(),
        //"/nav_bar": (context) => Bottom_nav_bar(),
       },
     );

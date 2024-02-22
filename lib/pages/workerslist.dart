@@ -325,12 +325,14 @@ class _WorkersListState extends State<WorkersList> {
           ),
           height: 55,
           backgroundColor: Colors.transparent,
+          //disableCurve: true,
           onTap: (index) {
             setState(() {
               _currentIndex = index;
             });
           },
           index: _currentIndex,
+          
         ),
       
       ),

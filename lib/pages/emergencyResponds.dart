@@ -6,14 +6,14 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/pages/workerInfo.dart';
 
-class Favorites extends StatefulWidget {
-  Favorites({Key? key}) : super(key: key);
+class EmergencyResponds extends StatefulWidget {
+  EmergencyResponds({Key? key}) : super(key: key);
 
   @override
-  _FavoritesState createState() => _FavoritesState();
+  _ERespondsState createState() => _ERespondsState();
 }
 
-class _FavoritesState extends State<Favorites> {
+class _ERespondsState extends State<EmergencyResponds> {
   int _currentIndex = 0;
   //const WorkersList({Key? key});
   List worker = [
@@ -52,13 +52,13 @@ class _FavoritesState extends State<Favorites> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-     //purple foreground
+        //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile.svg",
+                  "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -71,7 +71,7 @@ class _FavoritesState extends State<Favorites> {
                       // Navigator.pushNamed(context, "/signup");
                     },
                     icon: Icon(
-                      Icons.menu,
+                      Icons.arrow_back,
                       color: Colors.white,
                       size: 40,
                     )),
@@ -86,24 +86,6 @@ class _FavoritesState extends State<Favorites> {
                 ),
               ),
 
-              //search input
-
-              Padding(
-                padding: EdgeInsets.only(top: 90.0, right: 30, left: 30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: "Search technician name",
-                    contentPadding: EdgeInsets.zero,
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide.none, // Remove the border side
-                    ),
-                    filled: true, // Set filled to true
-                    fillColor: Colors.white, // Set the fill color to white
-                  ),
-                ),
-              ),
               //profile pic
               Positioned(
                 right: 15,
@@ -113,13 +95,31 @@ class _FavoritesState extends State<Favorites> {
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
-             
+
               SizedBox(
                 height: 35,
               ),
-             
-            
-
+                  //Text
+               Positioned(
+                top: 130,
+                left: 6,
+                child: Text(
+                  "Emergency responds:",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Raleway",
+                    color: Colors.black,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black12,
+                        offset: Offset(2, 2),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               //Workers List
               Positioned(
                 top: 180,
@@ -142,7 +142,7 @@ class _FavoritesState extends State<Favorites> {
                             width: 2.0,
                           ),
                         ),
-                        child:  ListTile(
+                        child: ListTile(
                           contentPadding: EdgeInsets.all(2),
                           leading: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -159,13 +159,12 @@ class _FavoritesState extends State<Favorites> {
                               ),
                             ],
                           ),
-                      //favorite icon
-                         trailing: 
-                         IconButton(onPressed: (){},
-                          icon: Icon( Icons.favorite,
-                      color: Color(0xFFBBA2BF),
-                      size: 25,)),
-                          //name 
+                          //emergency icon
+                          trailing: Padding(
+                            padding: const EdgeInsets.only(right:10 ),
+                            child: Image.asset("assets/images/Siren.png"),
+                          ),
+                          //name
                           title: Text(
                             worker[itemCount]['name'],
                             style: TextStyle(
@@ -217,8 +216,6 @@ class _FavoritesState extends State<Favorites> {
                                       print(rating);
                                     },
                                   ),
-                      
-                               
                                 ],
                               ),
                               // Row(
@@ -324,13 +321,4 @@ class _FavoritesState extends State<Favorites> {
       ),
     );
   }
-
-//   class WorkerInfo extends StatelessWidget {
-//   const WorkerInfo({Key? key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea();
-
-// }
 }
