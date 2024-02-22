@@ -169,7 +169,7 @@ class SignUpUser extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            "Login",
+                            "Sign Up",
                             style: TextStyle(
                               fontSize: 17,
                               color: Colors.grey[850],
