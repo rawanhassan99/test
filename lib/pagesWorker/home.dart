@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:grad_proj/pages/workerInfo.dart';
+import 'package:grad_proj/pagesWorker/UserReview.dart';
+import 'package:grad_proj/pagesWorker/workerInfo.dart';
 
 class HomeWoker extends StatefulWidget {
   HomeWoker({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomeWoker extends StatefulWidget {
 }
 
 class _HomeWokerState extends State<HomeWoker> {
-  int _currentIndex = 0;
+ 
   //const WorkersList({Key? key});
   List worker = [
     {
@@ -34,13 +35,7 @@ class _HomeWokerState extends State<HomeWoker> {
       "Review": ""
     },
   ];
-  final List<Widget> pages = [
-    //HomeScreen(),
-    // FavoriteScreen(),
-    // SupportAgentScreen(),
-    // NotificationsScreen(),
-    // SocialMediaScreen(),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +61,10 @@ class _HomeWokerState extends State<HomeWoker> {
                 top: 9,
                 child: IconButton(
                     onPressed: () {
-                      // Navigator.pushNamed(context, "/signup");
+                      // Navigator.push(
+                      //                 context,
+                      //                  MaterialPageRoute(builder: (context)=>Menu())
+                      //                 );
                     },
                     icon: Icon(
                       Icons.menu,
@@ -251,10 +249,10 @@ class _HomeWokerState extends State<HomeWoker> {
                                 child: Container(
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount)),
-                                      // );
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context)=>UserReview()),
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -299,45 +297,7 @@ class _HomeWokerState extends State<HomeWoker> {
                 ),
               )
             ])),
-        //nav bar
-        bottomNavigationBar: CurvedNavigationBar(
-          items: [
-            Icon(
-              Icons.home,
-              size: 35,
-              color: Color(
-                0xFFE9E9E9,
-              ),
-            ),
-            Icon(
-              Icons.support_agent,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.handshake,
-              size: 35,
-              color: Colors.white,
-            ),
-          ],
-          color: Color(
-            (0xFFBBA2BF),
-          ),
-          height: 55,
-          backgroundColor: Colors.transparent,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          index: _currentIndex,
-        ),
-      ),
+ ),
     );
   }
 }

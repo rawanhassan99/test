@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/pages/signup.dart';
+
+import 'package:grad_proj/pagesWorker/WokerBottomNavBar.dart';
+
 import 'package:grad_proj/pagesWorker/signup.dart';
 
 class LoginWorker extends StatelessWidget {
@@ -19,15 +21,15 @@ class LoginWorker extends StatelessWidget {
             children: [
               // Background Image
               //purple foreground
-Positioned(
-top: 0,
-right: 0,
-left: 0,
-child: SvgPicture.asset(
-"assets/images/Rec that Contain menu icon &profile1.svg",
-fit: BoxFit.cover,
-),
-),
+              Positioned(
+                top: 0,
+                right: 0,
+                left: 0,
+                child: SvgPicture.asset(
+                  "assets/images/Rec that Contain menu icon &profile1.svg",
+                  fit: BoxFit.cover,
+                ),
+              ),
               // App Title
               Positioned(
                 top: 15,
@@ -147,7 +149,10 @@ fit: BoxFit.cover,
                         SizedBox(height: 5),
                         ElevatedButton(
                           onPressed: () {
-                            // Perform login logic here
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BottomNavBarWorker()));
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFBBA2BF),
@@ -181,13 +186,17 @@ fit: BoxFit.cover,
                             ),
                             InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpWorker()),);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpWorker()),
+                                );
                               },
                               child: Text(
                                 'Sign up',
                                 style: TextStyle(
                                   fontFamily: "Raleway",
-                                  color: Color.fromARGB(255, 173, 148,177),
+                                  color: Color.fromARGB(255, 173, 148, 177),
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline,

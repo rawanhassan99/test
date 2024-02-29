@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grad_proj/pagesUser/BNavBarPages/bottom.dart';
+
 
 class SignUpUser extends StatelessWidget {
   const SignUpUser({Key? key});
@@ -156,7 +158,10 @@ class SignUpUser extends StatelessWidget {
                         SizedBox(height: 10),
                         ElevatedButton(
                           onPressed: () {
-                            // Perform login logic here
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BottomNavBarUser()));
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFBBA2BF),

@@ -1,9 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:grad_proj/pagesUser/workerReview.dart';
+import 'package:grad_proj/pagesWorker/MenuWorker.dart';
 
 class HistoryWorker extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class HistoryWorker extends StatefulWidget {
 }
 
 class _HistoryWorkerState extends State<HistoryWorker> {
-  int _currentIndex = 0;
+ 
 
   List<Map<String, dynamic>> worker = [
     {
@@ -93,7 +95,11 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                 top: 9,
                 child: IconButton(
                     onPressed: () {
-                      // Navigator.pushNamed(context, "/signup");
+                     //  Navigator.pushNamed(context, "/signup");
+                      Navigator.push(
+                                      context,
+                                       MaterialPageRoute(builder: (context)=>Menuw())
+                                      );
                     },
                     icon: Icon(
                       Icons.menu,
@@ -266,6 +272,10 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                                       //context,
                                       //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
                                       // );
+                                       Navigator.push(
+                                      context,
+                                       MaterialPageRoute(builder: (context)=>WorkerReview())
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -479,46 +489,8 @@ class _HistoryWorkerState extends State<HistoryWorker> {
             ],
           ),
         ),
-        //nav bar
-        bottomNavigationBar: CurvedNavigationBar(
-          items: [
-            Icon(
-              Icons.home,
-              size: 35,
-              color: Color(
-                0xFFE9E9E9,
-              ),
-            ),
-           
-            Icon(
-              Icons.support_agent,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.handshake,
-              size: 35,
-              color: Colors.white,
-            ),
-          ],
-          color: Color(
-            (0xFFBBA2BF),
-          ),
-          height: 55,
-          backgroundColor: Colors.transparent,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          index: _currentIndex,
-        ),
-      ),
+       
+   ),
     );
   }
 }

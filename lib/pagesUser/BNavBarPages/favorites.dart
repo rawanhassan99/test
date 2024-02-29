@@ -4,18 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:grad_proj/pages/workerInfo.dart';
+import 'package:grad_proj/pagesUser/MenuUser.dart';
+import 'package:grad_proj/pagesWorker/workerInfo.dart';
+import 'package:grad_proj/pagesUser/workerReview.dart';
 
-class EmergencyResponds extends StatefulWidget {
-  EmergencyResponds({Key? key}) : super(key: key);
+class Favorites extends StatelessWidget {
+  //const Notifications({Key? key});
 
-  @override
-  _ERespondsState createState() => _ERespondsState();
-}
-
-class _ERespondsState extends State<EmergencyResponds> {
-  int _currentIndex = 0;
-  //const WorkersList({Key? key});
   List worker = [
     {
       "name": "Mohamed Ahmed",
@@ -36,13 +31,7 @@ class _ERespondsState extends State<EmergencyResponds> {
       "Review": ""
     },
   ];
-  final List<Widget> pages = [
-    //HomeScreen(),
-    // FavoriteScreen(),
-    // SupportAgentScreen(),
-    // NotificationsScreen(),
-    // SocialMediaScreen(),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +41,13 @@ class _ERespondsState extends State<EmergencyResponds> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-        //purple foreground
+     //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/foregroundPurpleSmall.svg",
+                  "assets/images/Rec that Contain menu icon &profile.svg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -68,10 +57,13 @@ class _ERespondsState extends State<EmergencyResponds> {
                 top: 9,
                 child: IconButton(
                     onPressed: () {
-                      // Navigator.pushNamed(context, "/signup");
+                           Navigator.push(
+                                      context,
+                                       MaterialPageRoute(builder: (context)=>Menu())
+                                      );
                     },
                     icon: Icon(
-                      Icons.arrow_back,
+                      Icons.menu,
                       color: Colors.white,
                       size: 40,
                     )),
@@ -86,6 +78,24 @@ class _ERespondsState extends State<EmergencyResponds> {
                 ),
               ),
 
+              //search input
+
+              Padding(
+                padding: EdgeInsets.only(top: 90.0, right: 30, left: 30),
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: "Search technician name",
+                    contentPadding: EdgeInsets.zero,
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(25.0),
+                      borderSide: BorderSide.none, // Remove the border side
+                    ),
+                    filled: true, // Set filled to true
+                    fillColor: Colors.white, // Set the fill color to white
+                  ),
+                ),
+              ),
               //profile pic
               Positioned(
                 right: 15,
@@ -95,31 +105,13 @@ class _ERespondsState extends State<EmergencyResponds> {
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
-
+             
               SizedBox(
                 height: 35,
               ),
-                  //Text
-               Positioned(
-                top: 130,
-                left: 6,
-                child: Text(
-                  "Emergency responds:",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Raleway",
-                    color: Colors.black,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black12,
-                        offset: Offset(2, 2),
-                        blurRadius: 2,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+             
+            
+
               //Workers List
               Positioned(
                 top: 180,
@@ -142,7 +134,7 @@ class _ERespondsState extends State<EmergencyResponds> {
                             width: 2.0,
                           ),
                         ),
-                        child: ListTile(
+                        child:  ListTile(
                           contentPadding: EdgeInsets.all(2),
                           leading: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -159,12 +151,13 @@ class _ERespondsState extends State<EmergencyResponds> {
                               ),
                             ],
                           ),
-                          //emergency icon
-                          trailing: Padding(
-                            padding: const EdgeInsets.only(right:10 ),
-                            child: Image.asset("assets/images/Siren.png"),
-                          ),
-                          //name
+                      //favorite icon
+                         trailing: 
+                         IconButton(onPressed: (){},
+                          icon: Icon( Icons.favorite,
+                      color: Color(0xFFBBA2BF),
+                      size: 25,)),
+                          //name 
                           title: Text(
                             worker[itemCount]['name'],
                             style: TextStyle(
@@ -216,6 +209,8 @@ class _ERespondsState extends State<EmergencyResponds> {
                                       print(rating);
                                     },
                                   ),
+                      
+                               
                                 ],
                               ),
                               // Row(
@@ -236,10 +231,10 @@ class _ERespondsState extends State<EmergencyResponds> {
                                 child: Container(
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      //      Navigator.push(
-                                      //context,
-                                      //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
-                                      // );
+                                           Navigator.push(
+                                      context,
+                                       MaterialPageRoute(builder: (context)=>WorkerReview())
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -275,49 +270,7 @@ class _ERespondsState extends State<EmergencyResponds> {
                 ),
               )
             ])),
-        //nav bar
-        bottomNavigationBar: CurvedNavigationBar(
-          items: [
-            Icon(
-              Icons.home,
-              size: 35,
-              color: Color(
-                0xFFE9E9E9,
-              ),
-            ),
-            Icon(
-              Icons.favorite,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.support_agent,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.handshake,
-              size: 35,
-              color: Colors.white,
-            ),
-          ],
-          color: Color(
-            (0xFFBBA2BF),
-          ),
-          height: 55,
-          backgroundColor: Colors.transparent,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          index: _currentIndex,
-        ),
+       
       ),
     );
   }

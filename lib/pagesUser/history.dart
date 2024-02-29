@@ -2,19 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:grad_proj/pages/workerInfo.dart';
 
-class Responds extends StatefulWidget {
-  Responds({Key? key}) : super(key: key);
+//import 'package:grad_proj/pages/HomeScreen.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:grad_proj/pagesUser/workerReview.dart';
+import 'package:grad_proj/pagesWorker/UserReview.dart';
+import 'package:grad_proj/pagesWorker/workerInfo.dart';
+
+class History extends StatefulWidget {
+  History({Key? key}) : super(key: key);
 
   @override
-  _RespondsState createState() => _RespondsState();
+  _HistoryState createState() => _HistoryState();
 }
 
-class _RespondsState extends State<Responds> {
-  int _currentIndex = 0;
+class _HistoryState extends State<History> {
+
   //const WorkersList({Key? key});
   List worker = [
     {
@@ -35,14 +38,26 @@ class _RespondsState extends State<Responds> {
       "Description": "",
       "Review": ""
     },
+    {
+      "name": "Mohamed Ahmed",
+      "Type": "Air Conditioning Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 2.9,
+      "Number": "0123456",
+      "Description": "skilled and professional technician",
+      "Review": ""
+    },
+    {
+      "name": "Mohamed Ahmed",
+      "Type": "Air Conditioning Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 2.5,
+      "Number": "0123456",
+      "Description": "skilled and professional technician",
+      "Review": ""
+    },
   ];
-  final List<Widget> pages = [
-    //HomeScreen(),
-    // FavoriteScreen(),
-    // SupportAgentScreen(),
-    // NotificationsScreen(),
-    // SocialMediaScreen(),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +67,7 @@ class _RespondsState extends State<Responds> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-              //purple foreground
+            //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
@@ -71,7 +86,7 @@ class _RespondsState extends State<Responds> {
                       // Navigator.pushNamed(context, "/signup");
                     },
                     icon: Icon(
-                      Icons.arrow_back,
+                      Icons.menu,
                       color: Colors.white,
                       size: 40,
                     )),
@@ -99,12 +114,11 @@ class _RespondsState extends State<Responds> {
               SizedBox(
                 height: 35,
               ),
-              //text
               Positioned(
                 top: 130,
                 left: 6,
                 child: Text(
-                  "Select one from responds:",
+                  "Previous Requests:",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
@@ -120,13 +134,13 @@ class _RespondsState extends State<Responds> {
                   ),
                 ),
               ),
-
               //Workers List
               Positioned(
                 top: 180,
                 right: 5,
                 left: 5,
                 bottom: 0,
+
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
@@ -175,12 +189,10 @@ class _RespondsState extends State<Responds> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                // worker[itemCount]['Type'],
-                                "Expected: 300 Egyptian Pound",
+                                worker[itemCount]['Type'],
                                 style: TextStyle(
-                                  fontSize: 15,
-                                  fontFamily: "Quantico",
-                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  fontFamily: "Raleway",
                                   color: Colors.black87,
                                 ),
                               ),
@@ -190,7 +202,7 @@ class _RespondsState extends State<Responds> {
                                     worker[itemCount]['Number'],
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontFamily: "Quantico",
+                                      fontFamily: "Raleway",
                                       color: Colors.black87,
                                     ),
                                   ),
@@ -234,10 +246,10 @@ class _RespondsState extends State<Responds> {
                                 child: Container(
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      //      Navigator.push(
-                                      //context,
-                                      //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
-                                      // );
+                                           Navigator.push(
+                                      context,
+                                       MaterialPageRoute(builder: (context)=>WorkerReview())
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -271,61 +283,12 @@ class _RespondsState extends State<Responds> {
                     );
                   },
                 ),
+                //nav bar
               )
             ])),
-        //nav bar
-        bottomNavigationBar: CurvedNavigationBar(
-          items: [
-            Icon(
-              Icons.home,
-              size: 35,
-              color: Color(
-                0xFFE9E9E9,
-              ),
-            ),
-            Icon(
-              Icons.favorite,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.support_agent,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.handshake,
-              size: 35,
-              color: Colors.white,
-            ),
-          ],
-          color: Color(
-            (0xFFBBA2BF),
-          ),
-          height: 55,
-          backgroundColor: Colors.transparent,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          index: _currentIndex,
-        ),
-      ),
+    ),
     );
   }
 
-//   class WorkerInfo extends StatelessWidget {
-//   const WorkerInfo({Key? key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea();
-
-// }
 }

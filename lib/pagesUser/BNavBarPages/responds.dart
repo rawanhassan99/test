@@ -3,19 +3,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-//import 'package:grad_proj/pages/HomeScreen.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:grad_proj/pages/workerInfo.dart';
+import 'package:grad_proj/pagesUser/workerReview.dart';
+import 'package:grad_proj/pagesWorker/workerInfo.dart';
 
-class WorkersList extends StatefulWidget {
-  WorkersList({Key? key}) : super(key: key);
+class Responds extends StatefulWidget {
+  Responds({Key? key}) : super(key: key);
 
   @override
-  _WorkersListState createState() => _WorkersListState();
+  _RespondsState createState() => _RespondsState();
 }
 
-class _WorkersListState extends State<WorkersList> {
-  int _currentIndex = 0;
+class _RespondsState extends State<Responds> {
+
   //const WorkersList({Key? key});
   List worker = [
     {
@@ -36,32 +36,8 @@ class _WorkersListState extends State<WorkersList> {
       "Description": "",
       "Review": ""
     },
-    {
-      "name": "Mohamed Ahmed",
-      "Type": "Air Conditioning Maintenance",
-      "pic": "assets/images/profile.png",
-      "Rating": 2.9,
-      "Number": "0123456",
-      "Description": "skilled and professional technician",
-      "Review": ""
-    },
-    {
-      "name": "Mohamed Ahmed",
-      "Type": "Air Conditioning Maintenance",
-      "pic": "assets/images/profile.png",
-      "Rating": 2.5,
-      "Number": "0123456",
-      "Description": "skilled and professional technician",
-      "Review": ""
-    },
   ];
-  final List<Widget> pages = [
-    //HomeScreen(),
-    // FavoriteScreen(),
-    // SupportAgentScreen(),
-    // NotificationsScreen(),
-    // SocialMediaScreen(),
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +53,7 @@ class _WorkersListState extends State<WorkersList> {
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile.svg",
+                  "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -105,24 +81,6 @@ class _WorkersListState extends State<WorkersList> {
                 ),
               ),
 
-              //search input
-
-              Padding(
-                padding: EdgeInsets.only(top: 90.0, right: 30, left: 30),
-                child: TextField(
-                  decoration: InputDecoration(
-                    labelText: "Search technician name",
-                    contentPadding: EdgeInsets.zero,
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide.none, // Remove the border side
-                    ),
-                    filled: true, // Set filled to true
-                    fillColor: Colors.white, // Set the fill color to white
-                  ),
-                ),
-              ),
               //profile pic
               Positioned(
                 right: 15,
@@ -132,16 +90,38 @@ class _WorkersListState extends State<WorkersList> {
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
+
               SizedBox(
                 height: 35,
               ),
+              //text
+              Positioned(
+                top: 130,
+                left: 6,
+                child: Text(
+                  "Select one from responds:",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "Raleway",
+                    color: Colors.black,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black12,
+                        offset: Offset(2, 2),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
               //Workers List
               Positioned(
                 top: 180,
                 right: 5,
                 left: 5,
                 bottom: 0,
-
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
@@ -190,10 +170,12 @@ class _WorkersListState extends State<WorkersList> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                worker[itemCount]['Type'],
+                                // worker[itemCount]['Type'],
+                                "Expected: 300 Egyptian Pound",
                                 style: TextStyle(
-                                  fontSize: 16,
-                                  fontFamily: "Raleway",
+                                  fontSize: 15,
+                                  fontFamily: "Quantico",
+                                  fontWeight: FontWeight.w400,
                                   color: Colors.black87,
                                 ),
                               ),
@@ -203,7 +185,7 @@ class _WorkersListState extends State<WorkersList> {
                                     worker[itemCount]['Number'],
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontFamily: "Raleway",
+                                      fontFamily: "Quantico",
                                       color: Colors.black87,
                                     ),
                                   ),
@@ -247,10 +229,10 @@ class _WorkersListState extends State<WorkersList> {
                                 child: Container(
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      //      Navigator.push(
-                                      //context,
-                                      //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
-                                      // );
+                                           Navigator.push(
+                                      context,
+                                       MaterialPageRoute(builder: (context)=>WorkerReview())
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -284,67 +266,12 @@ class _WorkersListState extends State<WorkersList> {
                     );
                   },
                 ),
-                //nav bar
               )
             ])),
-        //nav bar
-        bottomNavigationBar: CurvedNavigationBar(
-          items: [
-            Icon(
-              Icons.home,
-              size: 35,
-              
-              color: Color(
-                0xFFE9E9E9,
-              ),
-              
-            ),
-            Icon(
-              Icons.favorite,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.support_agent,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.handshake,
-              size: 35,
-              color: Colors.white,
-            ),
-          ],
-          color: Color(
-            (0xFFBBA2BF),
-          ),
-          height: 55,
-          backgroundColor: Colors.transparent,
-          //disableCurve: true,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          index: _currentIndex,
-          
-        ),
-      
+
       ),
     );
   }
 
-//   class WorkerInfo extends StatelessWidget {
-//   const WorkerInfo({Key? key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea();
-
-// }
 }

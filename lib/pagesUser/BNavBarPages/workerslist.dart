@@ -1,21 +1,22 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+//import 'package:grad_proj/pages/HomeScreen.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:grad_proj/pages/workerInfo.dart';
+import 'package:grad_proj/pagesWorker/workerInfo.dart';
+import 'package:grad_proj/pagesUser/workerReview.dart';
 
-class Favorites extends StatefulWidget {
-  Favorites({Key? key}) : super(key: key);
+class WorkersList extends StatefulWidget {
+  const WorkersList({Key? key}) : super(key: key);
 
   @override
-  _FavoritesState createState() => _FavoritesState();
+  _WorkersListState createState() => _WorkersListState();
 }
 
-class _FavoritesState extends State<Favorites> {
-  int _currentIndex = 0;
-  //const WorkersList({Key? key});
+class _WorkersListState extends State<WorkersList> {
+
   List worker = [
     {
       "name": "Mohamed Ahmed",
@@ -35,13 +36,24 @@ class _FavoritesState extends State<Favorites> {
       "Description": "",
       "Review": ""
     },
-  ];
-  final List<Widget> pages = [
-    //HomeScreen(),
-    // FavoriteScreen(),
-    // SupportAgentScreen(),
-    // NotificationsScreen(),
-    // SocialMediaScreen(),
+    {
+      "name": "Mohamed Ahmed",
+      "Type": "Air Conditioning Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 2.9,
+      "Number": "0123456",
+      "Description": "skilled and professional technician",
+      "Review": ""
+    },
+    {
+      "name": "Mohamed Ahmed",
+      "Type": "Air Conditioning Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 2.5,
+      "Number": "0123456",
+      "Description": "skilled and professional technician",
+      "Review": ""
+    },
   ];
 
   @override
@@ -52,7 +64,7 @@ class _FavoritesState extends State<Favorites> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-     //purple foreground
+              //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
@@ -62,16 +74,16 @@ class _FavoritesState extends State<Favorites> {
                   fit: BoxFit.cover,
                 ),
               ),
-              //Menu button
+              //back button
               Positioned(
                 left: 3,
                 top: 9,
                 child: IconButton(
                     onPressed: () {
-                      // Navigator.pushNamed(context, "/signup");
+                      Navigator.pop(context);
                     },
                     icon: Icon(
-                      Icons.menu,
+                      Icons.arrow_back,
                       color: Colors.white,
                       size: 40,
                     )),
@@ -85,9 +97,7 @@ class _FavoritesState extends State<Favorites> {
                   child: SvgPicture.asset("assets/images/MR. House.svg"),
                 ),
               ),
-
               //search input
-
               Padding(
                 padding: EdgeInsets.only(top: 90.0, right: 30, left: 30),
                 child: TextField(
@@ -113,13 +123,9 @@ class _FavoritesState extends State<Favorites> {
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
-             
               SizedBox(
                 height: 35,
               ),
-             
-            
-
               //Workers List
               Positioned(
                 top: 180,
@@ -142,7 +148,7 @@ class _FavoritesState extends State<Favorites> {
                             width: 2.0,
                           ),
                         ),
-                        child:  ListTile(
+                        child: ListTile(
                           contentPadding: EdgeInsets.all(2),
                           leading: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -159,13 +165,7 @@ class _FavoritesState extends State<Favorites> {
                               ),
                             ],
                           ),
-                      //favorite icon
-                         trailing: 
-                         IconButton(onPressed: (){},
-                          icon: Icon( Icons.favorite,
-                      color: Color(0xFFBBA2BF),
-                      size: 25,)),
-                          //name 
+                          //name
                           title: Text(
                             worker[itemCount]['name'],
                             style: TextStyle(
@@ -182,7 +182,7 @@ class _FavoritesState extends State<Favorites> {
                               Text(
                                 worker[itemCount]['Type'],
                                 style: TextStyle(
-                                  fontSize: 15.5,
+                                  fontSize: 16,
                                   fontFamily: "Raleway",
                                   color: Colors.black87,
                                 ),
@@ -197,7 +197,7 @@ class _FavoritesState extends State<Favorites> {
                                       color: Colors.black87,
                                     ),
                                   ),
-                                  SizedBox(width: 40),
+                                  SizedBox(width: 60),
                                   RatingBar.builder(
                                     initialRating: worker[itemCount]['Rating'],
                                     minRating: 1,
@@ -217,8 +217,6 @@ class _FavoritesState extends State<Favorites> {
                                       print(rating);
                                     },
                                   ),
-                      
-                               
                                 ],
                               ),
                               // Row(
@@ -239,10 +237,10 @@ class _FavoritesState extends State<Favorites> {
                                 child: Container(
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      //      Navigator.push(
-                                      //context,
-                                      //  MaterialPageRoute(builder: (context)=>WorkerInfo(itemCount))
-                                      // );
+                                           Navigator.push(
+                                      context,
+                                       MaterialPageRoute(builder: (context)=>WorkerReview())
+                                      );
                                     },
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -276,61 +274,14 @@ class _FavoritesState extends State<Favorites> {
                     );
                   },
                 ),
+                //nav bar
               )
             ])),
-        //nav bar
-        bottomNavigationBar: CurvedNavigationBar(
-          items: [
-            Icon(
-              Icons.home,
-              size: 35,
-              color: Color(
-                0xFFE9E9E9,
-              ),
-            ),
-            Icon(
-              Icons.favorite,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.support_agent,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.notifications,
-              size: 35,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.handshake,
-              size: 35,
-              color: Colors.white,
-            ),
-          ],
-          color: Color(
-            (0xFFBBA2BF),
-          ),
-          height: 55,
-          backgroundColor: Colors.transparent,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          index: _currentIndex,
-        ),
+       
+      
       ),
     );
   }
 
-//   class WorkerInfo extends StatelessWidget {
-//   const WorkerInfo({Key? key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea();
-
-// }
 }
