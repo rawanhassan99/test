@@ -45,7 +45,7 @@ class _BottomNavBarUserState extends State<BottomNavBarUser> {
         
         inactiveColorPrimary: Colors.white,
         iconSize: 28,
-        textStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+        textStyle: const TextStyle(fontSize: 10,fontWeight: FontWeight.bold),
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.favorite),

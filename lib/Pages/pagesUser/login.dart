@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grad_proj/Pages/pagesUser/BNavBarPages/bottom.dart';
-
-
 import 'package:grad_proj/Pages/pagesUser/signup.dart';
 
 
@@ -13,8 +11,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: SizedBox(
           width: double.infinity,
@@ -73,7 +70,7 @@ class Login extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: "Quando",
                             color: Color.fromARGB(255, 173, 148, 177),
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
@@ -155,7 +152,6 @@ class Login extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => BottomNavBarUser()));
-                         
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFFBBA2BF),
@@ -216,7 +212,7 @@ class Login extends StatelessWidget {
             ],
           ),
         ),
-      ),)
+      ),
     );
   }
 }

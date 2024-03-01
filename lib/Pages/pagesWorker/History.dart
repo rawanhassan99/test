@@ -4,9 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 import 'package:grad_proj/Domain/listItem.dart';
-import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
+
 import 'package:grad_proj/Pages/pagesWorker/MenuWorker.dart';
 
 
@@ -170,14 +170,15 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                   scrollDirection: Axis.vertical,
                   itemCount: recentWorkers.length,
                   itemBuilder: (context, itemCount) {
-                    Map<String, dynamic> currentWorker =
-                        recentWorkers[itemCount];
                  return ListItem(
                 worker: recentWorkers[itemCount],
                 trailingWidget: recentWorkers[itemCount]['emergency'] == true
               ? Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("assets/images/Siren.png"),): null,
+                  child: Image.asset("assets/images/Siren.png"),): Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Image.asset("assets/images/Siren2.png"),),
+                  
                 pageIndex: 4); },
                 ),
               ),
@@ -215,14 +216,18 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                   scrollDirection: Axis.vertical,
                   itemCount: previousRequests.length,
                   itemBuilder: (context, itemCount) {
-                    Map<String, dynamic> currentRequest =
-                        previousRequests[itemCount];
                     return ListItem(
                 worker: previousRequests[itemCount],
                 trailingWidget: previousRequests[itemCount]['emergency'] == true
               ? Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("assets/images/Siren.png"),): null,
+                  child: Image.asset("assets/images/Siren.png"),
+                  ): 
+                  Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Image.asset("assets/images/Siren2.png"),
+                  ),
+                  onButtonPressed: () {},
                 pageIndex: 4); },
                 ),
               ),

@@ -174,14 +174,18 @@ class HomeWorker extends StatelessWidget {
                   itemCount: User.length,
                   itemBuilder: (context, itemCount) {
                     return ListItem(
-                worker: User[itemCount],
-                trailingWidget: User[itemCount]['emergency'] == true
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("assets/images/Siren.png"),): null,
-                pageIndex: 4); },
-                
-                
+                        worker: User[itemCount],
+                        trailingWidget: User[itemCount]['emergency'] == true
+                            ? Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Image.asset("assets/images/Siren.png"),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Image.asset("assets/images/Siren2.png"),
+                              ),
+                        pageIndex: 4);
+                  },
                 ),
               )
             ])),

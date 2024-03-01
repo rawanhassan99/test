@@ -138,7 +138,9 @@ class Favorites extends StatelessWidget {
                     color: Color(0xFFBBA2BF),
                     size: 25,
                   ),
-                ),pageIndex: 3, 
+                ),onButtonPressed: (){
+    MaterialPageRoute(builder: (context) => WorkerReview());}
+  ,pageIndex: 3, 
               );
                   },
                 ),
@@ -147,5 +149,7 @@ class Favorites extends StatelessWidget {
        
       ),
     );
+  
   }
+  
 }

@@ -5,7 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ListItem extends StatelessWidget {
   final Map<String, dynamic> worker;
-
+  final VoidCallback? onButtonPressed;
   final int pageIndex;
   final Widget? trailingWidget;
 
@@ -14,10 +14,20 @@ class ListItem extends StatelessWidget {
     required this.worker,
     required this.pageIndex,
     this.trailingWidget,
+     this.onButtonPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<String> Pages = [
+  '/',
+  '/page2',
+  '/page3',
+  '/page4',
+  '/page5',
+  '/page6',
+  '/page7',
+];
     bool shouldDisplayWorkerType =
         pageIndex != 4; // Check if it's not the fourth page
 
@@ -25,7 +35,7 @@ class ListItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
       child: Container(
         decoration: BoxDecoration(
-          color: Color.fromARGB(31, 125, 124, 124),
+          color: Color(0xFFEAE0E0),
           borderRadius: BorderRadius.circular(20.0),
           border: Border.all(
             color: Colors.black26,
@@ -73,7 +83,7 @@ class ListItem extends StatelessWidget {
                 ),
               if (!shouldDisplayWorkerType)
                 Text(
-                 'Expected Commission Fee : ${worker['Commission Fee']}',
+                  'Expected Commission Fee : ${worker['Commission Fee']}',
                   style: TextStyle(
                     fontSize: 15,
                     fontFamily: "Quantico",
@@ -118,10 +128,7 @@ class ListItem extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Container(
                   child: ElevatedButton(
-                    onPressed: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => WorkerReview()));
-                    },
+                    onPressed: onButtonPressed,
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Color(0xFFBBA2BF)),
