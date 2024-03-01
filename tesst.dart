@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 class HistoryWorker extends StatefulWidget {
+  const HistoryWorker({super.key});
+
   @override
   _HistoryWorkerState createState() => _HistoryWorkerState();
 }
 
 class _HistoryWorkerState extends State<HistoryWorker> {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
 
   List<Map<String, dynamic>> worker = [
     {
@@ -136,7 +136,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                     fontWeight: FontWeight.w500,
                     fontFamily: "Raleway",
                     color: Colors.black,
-                    shadows: [
+                    shadows: const [
                       Shadow(
                         color: Colors.black12,
                         offset: Offset(2, 2),
@@ -181,7 +181,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                     fontWeight: FontWeight.w500,
                     fontFamily: "Raleway",
                     color: Colors.black,
-                    shadows: [
+                    shadows: const [
                       Shadow(
                         color: Colors.black12,
                         offset: Offset(2, 2),
