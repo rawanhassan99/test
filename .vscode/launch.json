@@ -9,21 +9,21 @@
             "name": "grad_proj",
             "request": "launch",
             "type": "dart",
-            "program": "lib/Pages/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "grad_proj (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "program": "lib/Pages/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "grad_proj (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/Pages/main.dart"
+            "program": "lib/main.dart"
         }
     ]
 }

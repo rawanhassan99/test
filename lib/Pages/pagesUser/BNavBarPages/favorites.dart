@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:grad_proj/Domain/listItem.dart';
 import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
 import 'package:grad_proj/Pages/pagesWorker/workerInfo.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
@@ -19,7 +20,8 @@ class Favorites extends StatelessWidget {
       "Number": "0123456",
       "Description": "skilled and professional technician",
       "Review": "",
-      "Rating": 4.4
+      "Rating": 4.4,
+      "Favorite":true
     },
     {
       "name": "Nagy Ahmed",
@@ -28,7 +30,8 @@ class Favorites extends StatelessWidget {
       "Rating": 5.0,
       "Number": "1237568",
       "Description": "",
-      "Review": ""
+      "Review": "",
+        "Favorite":true
     },
   ];
 
@@ -125,149 +128,18 @@ class Favorites extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   itemCount: worker.length,
                   itemBuilder: (context, itemCount) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(31, 125, 124, 124),
-                          borderRadius: BorderRadius.circular(20.0),
-                          border: Border.all(
-                            color: Colors.black26,
-                            width: 2.0,
-                          ),
-                        ),
-                        child:  ListTile(
-                          contentPadding: EdgeInsets.all(2),
-                          leading: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              //profile
-                              SizedBox(
-                                width: 65,
-                                height: 55,
-                                child: CircleAvatar(
-                                  radius: 60,
-                                  backgroundImage:
-                                      AssetImage('assets/images/profile.png'),
-                                ),
-                              ),
-                            ],
-                          ),
-                      //favorite icon
-                         trailing: 
-                         IconButton(onPressed: (){},
-                          icon: Icon( Icons.favorite,
-                      color: Color(0xFFBBA2BF),
-                      size: 25,)),
-                          //name 
-                          title: Text(
-                            worker[itemCount]['name'],
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Raleway",
-                              color: Colors.black,
-                            ),
-                          ),
-                          //info and button
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                worker[itemCount]['Type'],
-                                style: TextStyle(
-                                  fontSize: 15.5,
-                                  fontFamily: "Raleway",
-                                  color: Colors.black87,
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    worker[itemCount]['Number'],
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: "Raleway",
-                                      color: Colors.black87,
-                                    ),
-                                  ),
-                                  SizedBox(width: 40),
-                                  RatingBar.builder(
-                                    initialRating: worker[itemCount]['Rating'],
-                                    minRating: 1,
-                                    maxRating: 5,
-                                    direction: Axis.horizontal,
-                                    allowHalfRating: true,
-                                    unratedColor: Colors.grey,
-                                    itemCount: 5,
-                                    itemSize: 20.0,
-                                    itemPadding:
-                                        EdgeInsets.symmetric(horizontal: 1.0),
-                                    itemBuilder: (context, _) => Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    onRatingUpdate: (rating) {
-                                      print(rating);
-                                    },
-                                  ),
-                      
-                               
-                                ],
-                              ),
-                              // Row(
-                              //   children: [
-
-                              // Text(
-                              //   worker[itemCount]['Rating'].toString(),
-                              //   style: TextStyle(
-                              //     fontSize: 16,
-                              //     fontFamily: "Raleway",
-                              //     color: Colors.black87,
-                              //   ),
-                              // ),
-                              //   ],
-                              // ),
-                              Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                           Navigator.push(
-                                      context,
-                                       MaterialPageRoute(builder: (context)=>WorkerReview())
-                                      );
-                                    },
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Color(0xFFBBA2BF)),
-                                      padding: MaterialStateProperty.all(
-                                        EdgeInsets.symmetric(
-                                            horizontal: 50, vertical: 5),
-                                      ),
-                                      shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(27),
-                                        ),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      "Details",
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
+                    return ListItem(
+                worker: worker[itemCount],
+                trailingWidget:
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.favorite,
+                    color: Color(0xFFBBA2BF),
+                    size: 25,
+                  ),
+                ),pageIndex: 3, 
+              );
                   },
                 ),
               )
