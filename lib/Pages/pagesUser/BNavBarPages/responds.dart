@@ -128,7 +128,8 @@ class _RespondsState extends State<Responds> {
                     itemBuilder: (context, itemCount) {
                       return ListItem(
                         worker: worker[itemCount],
-                        pageIndex: 4,
+                        pageIndex: 2,
+                         navigateToPage: "/reviewW",
                       );
                     }),
               )

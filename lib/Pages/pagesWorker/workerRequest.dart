@@ -4,7 +4,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/Pages/pagesWorker/WokerBottomNavBar.dart';
+import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
+
 
 class WorkerRequest extends StatefulWidget {
   const WorkerRequest({Key? key}) : super(key: key);
@@ -14,7 +15,9 @@ class WorkerRequest extends StatefulWidget {
 }
 
 class _WorkerRequestState extends State<WorkerRequest> {
-  
+
+  //const WorkersList({Key? key});
+
   bool isAvailable24H = false;
 
   @override
@@ -31,10 +34,9 @@ class _WorkerRequestState extends State<WorkerRequest> {
                 top: 0,
                 right: 0,
                 left: 0,
-                bottom: 590,
                 child: SvgPicture.asset(
-                  'assets/images/Rec that Contain menu icon &profile.svg',
-                  fit: BoxFit.fill,
+                  "assets/images/Rec that Contain menu icon &profile (1).svg",
+                  fit: BoxFit.cover,
                 ),
               ),
 
@@ -61,106 +63,11 @@ class _WorkerRequestState extends State<WorkerRequest> {
                 ],
               ),
 
-              Positioned(
-                top: 15,
-                left: 0,
-                right: 0,
-                bottom: 300,
-                child: Center(
-                  child: InkWell(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return SizedBox(
-                            height: 350,
-                            child: Column(
-                              children: <Widget>[
-                                ListTile(
-                                  title: Text('Carpenters'),
-                                  onTap: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                ListTile(
-                                  title: Text('Plumbers'),
-                                  onTap: () {
-                                    setState(() {});
-
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                ListTile(
-                                  title: Text('Electricians'),
-                                  onTap: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                ListTile(
-                                  title: Text('Painters'),
-                                  onTap: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                ListTile(
-                                  title: Text('Tilers'),
-                                  onTap: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                ListTile(
-                                  title: Text('Plastering Contractors'),
-                                  onTap: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                ListTile(
-                                  title: Text('Appliance Repair Technician'),
-                                  onTap: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      // padding: EdgeInsets.symmetric(vertical: 5, horizontal: 4),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        border: Border.all(color: Colors.grey),
-                      ),
-
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'Select Your Job',
-                            style: TextStyle(fontSize: 13),
-                          ),
-                          Icon(Icons.arrow_drop_down),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
               // Add Post Fields and Button
               Positioned(
-                top: 300, // تعديل الارتفاع حسب الاحتياج
+                top: 200, // تعديل الارتفاع حسب الاحتياج
                 left: 20, // تعديل المسافة من اليسار حسب الاحتياج
                 right: 20,
-                bottom: 9,
                 // تعديل المسافة من اليمين حسب الاحتياج
                 child: Column(
                   children: [
@@ -186,6 +93,89 @@ class _WorkerRequestState extends State<WorkerRequest> {
                     ),
                     SizedBox(height: 20),
                     // القطعة المضافة بين الحقل النصي وعنصر "proName"
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: 350,
+                              child: Column(
+                                children: <Widget>[
+                                  ListTile(
+                                    title: Text('Carpenters'),
+                                    onTap: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Plumbers'),
+                                    onTap: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Electricians'),
+                                    onTap: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Painters'),
+                                    onTap: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Tilers'),
+                                    onTap: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Plastering Contractors'),
+                                    onTap: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  ListTile(
+                                    title: Text('Appliance Repair Technician'),
+                                    onTap: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Select Your Job',
+                              style: TextStyle(fontSize: 13),
+                            ),
+                            Icon(Icons.arrow_drop_down),
+                          ],
+                        ),
+                      ),
+                    ),
 
                     SizedBox(
                       height: 50,
@@ -196,10 +186,7 @@ class _WorkerRequestState extends State<WorkerRequest> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           TextButton.icon(
-                            onPressed: () {
-                              // Add functionality for upload photo/video button
-                              print('Upload button pressed');
-                            },
+                            onPressed: () {},
                             icon: Icon(Icons.photo),
                             label: Text('Upload Your National ID card',
                                 style: TextStyle(
@@ -242,16 +229,16 @@ class _WorkerRequestState extends State<WorkerRequest> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
+                        Container(
                           width: 150, // تحديد العرض حسب الحاجة
                           height: 50, // تحديد الارتفاع حسب الحاجة
                           child: TextButton(
                             onPressed: () {
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BottomNavBarWorker()));
-
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ReqCategory()));
+                              print('Create Post button pressed');
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFFBBA2BF),
@@ -279,13 +266,13 @@ class _WorkerRequestState extends State<WorkerRequest> {
     );
   }
 
-//post layer
+  //post layer
   Widget FriendPost({
     required String proName,
   }) {
     return Column(
       children: <Widget>[
-        SizedBox(
+        Container(
           width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,

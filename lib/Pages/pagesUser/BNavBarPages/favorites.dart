@@ -138,9 +138,9 @@ class Favorites extends StatelessWidget {
                     color: Color(0xFFBBA2BF),
                     size: 25,
                   ),
-                ),onButtonPressed: (){
-    MaterialPageRoute(builder: (context) => WorkerReview());}
-  ,pageIndex: 3, 
+                )
+  ,pageIndex: 1, 
+  navigateToPage: "/reviewW",
               );
                   },
                 ),

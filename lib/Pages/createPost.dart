@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable
 
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
+import 'package:grad_proj/Pages/posts.dart';
+
+import 'package:grad_proj/pages/createPost.dart';
 
 
 class CreatePost extends StatefulWidget {
@@ -14,7 +15,7 @@ class CreatePost extends StatefulWidget {
 }
 
 class _CreatePostState extends State<CreatePost> {
-  // int _currentIndex = 0;
+  
   //const WorkersList({Key? key});
 
   get bottomNavigationBar => null;
@@ -37,10 +38,9 @@ class _CreatePostState extends State<CreatePost> {
                 top: 0,
                 right: 0,
                 left: 0,
-                bottom: 500,
                 child: SvgPicture.asset(
-                  'assets/images/Rec that Contain menu icon &profile.svg',
-                  fit: BoxFit.fill,
+                  "assets/images/Rec that Contain menu icon &profile (1).svg",
+                  fit: BoxFit.cover,
                 ),
               ),
               //menu button
@@ -72,7 +72,7 @@ class _CreatePostState extends State<CreatePost> {
                 top: 20,
                 child: CircleAvatar(
                   radius: 25, // Adjust radius as needed
-                  backgroundImage: AssetImage('assets/images/man2.jpg'),
+                  backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
               SizedBox(
@@ -82,7 +82,7 @@ class _CreatePostState extends State<CreatePost> {
                 padding: EdgeInsets.symmetric(vertical: 100),
                 children: [
                   FriendPost(
-                    proPic: 'assets/images/man2.jpg',
+                    proPic: 'assets/images/profile.png',
                     proName: 'Ali Mohamed Omar ',
                   ),
                 ],
@@ -155,12 +155,15 @@ class _CreatePostState extends State<CreatePost> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
+                        Container(
                           width: 100, // تحديد العرض حسب الحاجة
                           height: 50, // تحديد الارتفاع حسب الحاجة
                           child: TextButton(
                             onPressed: () {
-                              // Add functionality to create post button
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Posts()));
                               print('Create Post button pressed');
                             },
                             style: ElevatedButton.styleFrom(
@@ -184,30 +187,6 @@ class _CreatePostState extends State<CreatePost> {
             ],
           ),
         ),
-        bottomNavigationBar: Container(
-          child: CurvedNavigationBar(
-            items: const [
-              Icon(Icons.home, size: 35, color: Color(0xFFE9E9E9)),
-              Icon(Icons.support_agent, size: 30, color: Colors.white),
-              Icon(Icons.favorite, size: 35, color: Colors.white),
-              Icon(Icons.notifications, size: 35, color: Colors.white),
-              Icon(Icons.handshake, size: 35, color: Colors.white),
-            ],
-            color: const Color((0xFFBBA2BF)),
-            height: 55,
-            backgroundColor: Colors.transparent,
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const ReqCategory()));
-          },
-          backgroundColor: const Color(0xFFBBA2BF),
-          shape: const CircleBorder(),
-          child: const Icon(Icons.add_chart_rounded),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }
@@ -219,7 +198,7 @@ class _CreatePostState extends State<CreatePost> {
   }) {
     return Column(
       children: <Widget>[
-        SizedBox(
+        Container(
           width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,

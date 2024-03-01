@@ -143,7 +143,7 @@ class _WorkersListState extends State<WorkersList> {
                   scrollDirection: Axis.vertical,
                   itemCount: worker.length,
                   itemBuilder: (context, itemCount) {
-                    return ListItem(worker: worker[itemCount], pageIndex: 1);
+                    return ListItem(worker: worker[itemCount], pageIndex: 0,navigateToPage: '/reviewW',);
                   },
                 ),
        

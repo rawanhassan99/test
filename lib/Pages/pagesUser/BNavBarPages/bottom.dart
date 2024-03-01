@@ -10,7 +10,8 @@ import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
 import 'package:grad_proj/Pages/pagesUser/BNavBarPages/home.dart';
 
 import 'package:grad_proj/Pages/pagesUser/BNavBarPages/notificationsUser.dart';
-import 'package:grad_proj/Pages/pagesUser/BNavBarPages/post.dart';
+import 'package:grad_proj/Pages/posts.dart';
+
 
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';

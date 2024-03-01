@@ -5,7 +5,6 @@ import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
 import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
 
 
-//import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class Req extends StatefulWidget {
   const Req({Key? key}) : super(key: key);
@@ -61,14 +60,14 @@ class _ReqState extends State<Req> {
                 top: 15,
                 child: CircleAvatar(
                   radius: 25,
-                  backgroundImage: AssetImage('assets/images/man3.jpg'),
+                  backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
               Center(
                 child: Stack(children: [
                   Container(
-                    width: 350,
-                    height: 550,
+                    width: 330,
+                    height: 520,
                     decoration: BoxDecoration(
                         color: const Color(
                             0xFFF5F3F3), // Replace with your desired color
@@ -78,7 +77,7 @@ class _ReqState extends State<Req> {
                   Positioned.fill(
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          top: 20, left: 15, right: 15, bottom: 20),
+                          top: 0, left: 15, right: 15, bottom: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -96,9 +95,13 @@ class _ReqState extends State<Req> {
                                             color: Colors.black,
                                             fontSize: 12.0),
                                       ),
+
                                       //  onTap: () {
                                       // Handle settings tap
                                       //},
+                                    ),
+                                    const SizedBox(
+                                      height: 0,
                                     ),
                                     TextFormField(
                                       decoration: const InputDecoration(
@@ -123,7 +126,7 @@ class _ReqState extends State<Req> {
                                   ],
                                 ),
                               ),
-                              const SizedBox(width: 14.0),
+                              const SizedBox(height: 0.0),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,6 +142,9 @@ class _ReqState extends State<Req> {
                                       //  onTap: () {
                                       // Handle settings tap
                                       //},
+                                    ),
+                                    const SizedBox(
+                                      height: 0,
                                     ),
                                     TextFormField(
                                       decoration: const InputDecoration(
@@ -165,7 +171,7 @@ class _ReqState extends State<Req> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 14.0),
+                          const SizedBox(height: 5.0),
                           InkWell(
                             onTap: () {
                               // Handle address icon tap
@@ -174,7 +180,7 @@ class _ReqState extends State<Req> {
                             child: const Row(
                               children: [
                                 Icon(Icons.location_on),
-                                SizedBox(width: 8.0),
+                                SizedBox(width: 5.0),
                                 Text(
                                   'Address*',
                                   style: TextStyle(fontSize: 13.0),
@@ -200,7 +206,7 @@ class _ReqState extends State<Req> {
                             },
                             onSaved: (value) {},
                           ),
-                          const SizedBox(height: 14.0),
+                          const SizedBox(height: 5.0),
                           const Text('Description of the problem*',
                               style: TextStyle(fontSize: 13.0)),
                           TextFormField(
@@ -225,6 +231,8 @@ class _ReqState extends State<Req> {
                             onSaved: (value) {},
                           ),
                           ListTile(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 0, horizontal: 0),
                             leading: const Icon(Icons.camera_alt_outlined),
                             title: const Text(
                               'upload photo',
@@ -236,8 +244,10 @@ class _ReqState extends State<Req> {
                             },
                           ),
 
-                          const SizedBox(height: 14.0),
+                          const SizedBox(height: 0.0),
                           const ListTile(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 0, horizontal: 0),
                             leading: Icon(Icons.money),
                             title: Text(
                               'Expected commission fee [optional]',
@@ -259,7 +269,7 @@ class _ReqState extends State<Req> {
                             keyboardType: TextInputType.number,
                             onSaved: (value) {},
                           ),
-                          const SizedBox(height: 14.0),
+                          const SizedBox(height: 1.0),
                           //  const Divider(),
                           Center(
                             child: Padding(
@@ -284,7 +294,7 @@ class _ReqState extends State<Req> {
                 ]),
               )
             ])),
-  floatingActionButton: FloatingActionButton(
+    floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const ReqCategory()));

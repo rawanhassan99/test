@@ -3,17 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:grad_proj/Pages/adminchat.dart';
-
-
-
-//import 'package:grad_proj/pages/favorites.dart';
-
-
-import 'package:grad_proj/Pages/pagesUser/BNavBarPages/post.dart';
-
 import 'package:grad_proj/Pages/pagesWorker/home.dart';
 import 'package:grad_proj/Pages/pagesWorker/notificationsWorker.dart';
-
+import 'package:grad_proj/Pages/posts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 // Main Navigation Screen
 class BottomNavBarWorker extends StatefulWidget {

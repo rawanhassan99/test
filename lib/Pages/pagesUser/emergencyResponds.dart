@@ -133,7 +133,10 @@ class _ERespondsState extends State<EmergencyResponds> {
                 trailingWidget: Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Image.asset("assets/images/Siren.png"),
-                ),pageIndex: 4,
+                
+                ),
+                navigateToPage: "/reviewW",
+                pageIndex: 4,
               );
                   },
                 ),

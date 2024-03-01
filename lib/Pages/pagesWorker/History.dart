@@ -28,7 +28,8 @@ class _HistoryWorkerState extends State<HistoryWorker> {
       "Review": "",
       "Rating": 4.4,
       "Date": DateTime(2024, 12, 31),
-      "Commission Fee":200
+      "Commission Fee":200,
+      "emergency": true
     },
     {
       "name": "Nagy Ahmed",
@@ -178,7 +179,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                   child: Image.asset("assets/images/Siren.png"),): Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Image.asset("assets/images/Siren2.png"),),
-                  
+                  navigateToPage: "/reviewU",
                 pageIndex: 4); },
                 ),
               ),
@@ -227,7 +228,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                   padding: const EdgeInsets.only(right: 10),
                   child: Image.asset("assets/images/Siren2.png"),
                   ),
-                  onButtonPressed: () {},
+                  navigateToPage: "/reviewU",
                 pageIndex: 4); },
                 ),
               ),

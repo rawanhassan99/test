@@ -1,35 +1,30 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ListItem extends StatelessWidget {
   final Map<String, dynamic> worker;
-  final VoidCallback? onButtonPressed;
+ 
   final int pageIndex;
   final Widget? trailingWidget;
+   final  String navigateToPage;
+   
 
   const ListItem({
     Key? key,
     required this.worker,
     required this.pageIndex,
     this.trailingWidget,
-     this.onButtonPressed,
+    required this.navigateToPage,
+    
   }) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
-    List<String> Pages = [
-  '/',
-  '/page2',
-  '/page3',
-  '/page4',
-  '/page5',
-  '/page6',
-  '/page7',
-];
-    bool shouldDisplayWorkerType =
-        pageIndex != 4; // Check if it's not the fourth page
+    bool shouldDisplayWorkerType = pageIndex == 0 || pageIndex == 1;
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
@@ -47,7 +42,6 @@ class ListItem extends StatelessWidget {
           leading: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //profile
               SizedBox(
                 width: 65,
                 height: 55,
@@ -58,7 +52,6 @@ class ListItem extends StatelessWidget {
               ),
             ],
           ),
-          //name
           title: Text(
             worker['name'] ?? 'N/A',
             style: TextStyle(
@@ -68,7 +61,6 @@ class ListItem extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          //info and button
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -128,7 +120,7 @@ class ListItem extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Container(
                   child: ElevatedButton(
-                    onPressed: onButtonPressed,
+                    onPressed:  () => Navigator.pushNamed(context, navigateToPage),
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Color(0xFFBBA2BF)),

@@ -3,15 +3,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
+import 'package:grad_proj/Pages/posts.dart';
+import 'package:grad_proj/pages/editPost.dart';
+
+
 class EditPost extends StatefulWidget {
   const EditPost({Key? key}) : super(key: key);
 
   @override
-  EditPostState createState() => EditPostState();
+  _EditPostState createState() => _EditPostState();
 }
 
-class EditPostState extends State<EditPost> {
-  
+class _EditPostState extends State<EditPost> {
+
+  //const WorkersList({Key? key});
+
   get bottomNavigationBar => null;
 
   @override
@@ -32,25 +39,25 @@ class EditPostState extends State<EditPost> {
                 top: 0,
                 right: 0,
                 left: 0,
-                bottom: 560,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile.svg",
-                  fit: BoxFit.fill,
+                  "assets/images/Rec that Contain menu icon &profile (1).svg",
+                  fit: BoxFit.cover,
                 ),
               ),
               //menu button
               Positioned(
-                left: 3,
-                top: 9,
+                top: 15,
                 child: IconButton(
-                    onPressed: () {
-                      //  Navigator.pushNamed(context, "/menu");
-                    },
-                    icon: Icon(
-                      Icons.menu,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      size: 40,
-                    )),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Menu()));
+                  },
+                  icon: Icon(
+                    Icons.menu,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    size: 40,
+                  ),
+                ),
               ),
               //Mr. house word
               Positioned(
@@ -67,7 +74,7 @@ class EditPostState extends State<EditPost> {
                 top: 20,
                 child: CircleAvatar(
                   radius: 25, // Adjust radius as needed
-                  backgroundImage: AssetImage('assets/images/user (1).png'),
+                  backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
               SizedBox(
@@ -77,7 +84,7 @@ class EditPostState extends State<EditPost> {
                 padding: EdgeInsets.symmetric(vertical: 100),
                 children: [
                   FriendPost(
-                    proPic: 'assets/images/user (1).png',
+                    proPic: 'assets/images/profile.png',
                     proName: 'Ali Mohamed Omar ',
                   ),
                 ],
@@ -151,13 +158,15 @@ class EditPostState extends State<EditPost> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
+                        Container(
                           width: 100, // تحديد العرض حسب الحاجة
                           height: 50, // تحديد الارتفاع حسب الحاجة
                           child: TextButton(
                             onPressed: () {
-                              // Add functionality to create post button
-                              print('Create Post button pressed');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Posts()));
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFFBBA2BF),
@@ -184,14 +193,14 @@ class EditPostState extends State<EditPost> {
     );
   }
 
-//post layer
+  //post layer
   Widget FriendPost({
     required String proPic,
     required String proName,
   }) {
     return Column(
       children: <Widget>[
-        SizedBox(
+        Container(
           width: double.infinity,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
