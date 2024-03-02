@@ -40,7 +40,7 @@ class _EditPostState extends State<EditPost> {
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile (1).svg",
+                 "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),

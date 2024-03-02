@@ -6,18 +6,13 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 //import 'package:grad_proj/pages/HomeScreen.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/Domain/listItem.dart';
+
 import 'package:grad_proj/Pages/pagesWorker/workerInfo.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 
-class WorkersList extends StatefulWidget {
-  const WorkersList({Key? key}) : super(key: key);
-
-  @override
-  _WorkersListState createState() => _WorkersListState();
-}
-
-class _WorkersListState extends State<WorkersList> {
-
+class WorkersList extends StatelessWidget {
+   WorkersList({Key? key}) : super(key: key);
+  
   List worker = [
     {
       "name": "Seif Ahmed",
@@ -143,7 +138,12 @@ class _WorkersListState extends State<WorkersList> {
                   scrollDirection: Axis.vertical,
                   itemCount: worker.length,
                   itemBuilder: (context, itemCount) {
-                    return ListItem(worker: worker[itemCount], pageIndex: 0,navigateToPage: '/reviewW',);
+                    return ListItem(
+                      worker: worker[itemCount],
+                       pageIndex: 0,
+                        onPressed: () => navigateToPage1(context),
+                       
+                    );
                   },
                 ),
        
@@ -157,3 +157,6 @@ class _WorkersListState extends State<WorkersList> {
 
 
 }
+void navigateToPage1(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
+  }

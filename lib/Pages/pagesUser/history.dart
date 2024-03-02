@@ -5,6 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 
 import 'package:grad_proj/Domain/listItem.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
+import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
+import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 
 import 'package:grad_proj/Pages/pagesWorker/MenuWorker.dart';
 
@@ -101,7 +104,7 @@ class History extends StatelessWidget {
                      //  Navigator.pushNamed(context, "/signup");
                       Navigator.push(
                                       context,
-                                       MaterialPageRoute(builder: (context)=>Menuw())
+                                       MaterialPageRoute(builder: (context)=>Menu())
                                       );
                     },
                     icon: Icon(
@@ -175,7 +178,7 @@ class History extends StatelessWidget {
                   child: Image.asset("assets/images/Siren.png"),): Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Image.asset("assets/images/Siren2.png"),),
-                  navigateToPage:"/reviewW" ,
+                  onPressed: () => navigateToPage4(context),
                 pageIndex: 3); },
                 ),
               ),
@@ -222,7 +225,8 @@ class History extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 10),
                   child: Image.asset("assets/images/Siren2.png"),),
                 pageIndex: 3,
-                navigateToPage: "/reviewW",
+                 onPressed: () => navigateToPage4(context),
+                       
                 ); },
                 ),
               ),
@@ -234,3 +238,6 @@ class History extends StatelessWidget {
     );
   }
 }
+void navigateToPage4(BuildContext context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
+  }

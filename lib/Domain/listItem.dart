@@ -1,26 +1,25 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 
 class ListItem extends StatelessWidget {
   final Map<String, dynamic> worker;
- 
+
   final int pageIndex;
   final Widget? trailingWidget;
-   final  String navigateToPage;
-   
+  final Function() onPressed;
+
 
   const ListItem({
     Key? key,
     required this.worker,
     required this.pageIndex,
     this.trailingWidget,
-    required this.navigateToPage,
-    
+    required this.onPressed,
+  
   }) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,18 +38,13 @@ class ListItem extends StatelessWidget {
         ),
         child: ListTile(
           contentPadding: EdgeInsets.all(2),
-          leading: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 65,
-                height: 55,
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
-              ),
-            ],
+          leading: SizedBox(
+            width: 65,
+            height: 55,
+            child: CircleAvatar(
+              radius: 70,
+              backgroundImage: AssetImage('assets/images/profile.png'),
+            ),
           ),
           title: Text(
             worker['name'] ?? 'N/A',
@@ -119,33 +113,32 @@ class ListItem extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  child: ElevatedButton(
-                    onPressed:  () => Navigator.pushNamed(context, navigateToPage),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Color(0xFFBBA2BF)),
-                      padding: MaterialStateProperty.all(
-                        EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                  width: 160,
+                  height: 30,
+                  
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 2),
+                  decoration: BoxDecoration(
+                      color: Color(0xFFBBA2BF),
+                      border: Border.all(
+                        color: Color.fromARGB(255, 171, 155, 172),
+                        width: 2.0,
                       ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(27),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      "Details",
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.black,
-                      ),
+                      borderRadius: BorderRadius.circular(27)),
+                  child: Text(
+                    "Details",
+                    textAlign: TextAlign.center,                  
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 17,
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
           trailing: trailingWidget,
+          onTap: onPressed,
         ),
       ),
     );

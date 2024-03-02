@@ -11,7 +11,7 @@ import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 
 class Favorites extends StatelessWidget {
   //const Notifications({Key? key});
-
+ 
   List worker = [
     {
       "name": "Mohamed Ahmed",
@@ -140,7 +140,8 @@ class Favorites extends StatelessWidget {
                   ),
                 )
   ,pageIndex: 1, 
-  navigateToPage: "/reviewW",
+  onPressed: () => navigateToPage2(context),
+
               );
                   },
                 ),
@@ -153,3 +154,6 @@ class Favorites extends StatelessWidget {
   }
   
 }
+void navigateToPage2(BuildContext context) {
+       Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
+  }

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/Domain/listItem.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 import 'package:grad_proj/Pages/pagesWorker/workerInfo.dart';
 
@@ -135,7 +136,7 @@ class _ERespondsState extends State<EmergencyResponds> {
                   child: Image.asset("assets/images/Siren.png"),
                 
                 ),
-                navigateToPage: "/reviewW",
+                onPressed: () => navigateToPage5(context),
                 pageIndex: 4,
               );
                   },
@@ -147,3 +148,6 @@ class _ERespondsState extends State<EmergencyResponds> {
     );
   }
 }
+void navigateToPage5(BuildContext context) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
+  }

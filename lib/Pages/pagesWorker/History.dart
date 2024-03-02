@@ -6,8 +6,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 
 import 'package:grad_proj/Domain/listItem.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
 
 import 'package:grad_proj/Pages/pagesWorker/MenuWorker.dart';
+import 'package:grad_proj/Pages/pagesWorker/UserReview.dart';
 
 
 class HistoryWorker extends StatefulWidget {
@@ -179,7 +181,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                   child: Image.asset("assets/images/Siren.png"),): Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Image.asset("assets/images/Siren2.png"),),
-                  navigateToPage: "/reviewU",
+                  onPressed: () => navigateToPage7(context),
                 pageIndex: 4); },
                 ),
               ),
@@ -228,7 +230,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                   padding: const EdgeInsets.only(right: 10),
                   child: Image.asset("assets/images/Siren2.png"),
                   ),
-                  navigateToPage: "/reviewU",
+                 onPressed: () => navigateToPage7(context),
                 pageIndex: 4); },
                 ),
               ),
@@ -240,3 +242,6 @@ class _HistoryWorkerState extends State<HistoryWorker> {
     );
   }
 }
+void navigateToPage7(BuildContext context) {
+       Navigator.push(context, MaterialPageRoute(builder: (context) => UserReview()));
+  }

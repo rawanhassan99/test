@@ -25,6 +25,7 @@ class _CreatePostState extends State<CreatePost> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFFBBA2BF),
           title: Text('Create Post'),
           actions: [],
         ),
@@ -39,7 +40,7 @@ class _CreatePostState extends State<CreatePost> {
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile (1).svg",
+                  "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),

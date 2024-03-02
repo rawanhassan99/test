@@ -1,4 +1,6 @@
 
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
@@ -21,9 +23,11 @@ class _CreatePostState extends State<Posts> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFFBBA2BF),
           title: Text('Create Post'),
           actions: [
             IconButton(
+              
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => CreatePost()));
@@ -38,34 +42,33 @@ class _CreatePostState extends State<Posts> {
           height: double.infinity,
           child: Stack(
             children: [
-              //purple foreground
+       //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile (1).svg",
+                  "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),
               //Menu button
               Positioned(
-                top: 15,
+                left: 3,
+                top: 9,
                 child: IconButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Menu()));
-                  },
-                  icon: Icon(
-                    Icons.menu,
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    size: 40,
-                  ),
-                ),
+                    onPressed: () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => Menu()));
+                    },
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                      size: 40,
+                    )),
               ),
               //Mr. house word
               Positioned(
-                top: 20,
+                top: 15,
                 left: 0,
                 right: 0,
                 child: Center(
@@ -76,16 +79,17 @@ class _CreatePostState extends State<Posts> {
               //profile pic
               Positioned(
                 right: 15,
-                top: 20,
+                top: 15,
                 child: CircleAvatar(
                   radius: 25, // Adjust radius as needed
                   backgroundImage: AssetImage('assets/images/profile.png'),
                 ),
               ),
+
               SizedBox(
-                height: 45,
+                height: 35,
               ),
-              //post layer Open
+                //post layer Open
               ListView(
                 padding: EdgeInsets.symmetric(vertical: 100),
                 children: [
