@@ -1,12 +1,11 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:grad_proj/Pages/adminchat.dart';
 import 'package:grad_proj/Pages/pagesWorker/home.dart';
+
 import 'package:grad_proj/Pages/pagesWorker/notificationsWorker.dart';
 import 'package:grad_proj/Pages/posts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
 // Main Navigation Screen
 class BottomNavBarWorker extends StatefulWidget {
   const BottomNavBarWorker({Key? key}) : super(key: key);
@@ -19,52 +18,47 @@ class _BottomNavBarWorkerState extends State<BottomNavBarWorker> {
   final _controller = PersistentTabController(initialIndex: 0);
 
   List<Widget> screens() {
-    return  [
-              HomeWorker(),
- 
-       const AdminChat(),
-       alartsWorker(),
-       const Posts(),
+    return [
+      HomeWorker(),
+      AdminChat(),
+      alartsWorker(),
+      Posts(),
     ];
   }
 
   List<PersistentBottomNavBarItem> navBarItems() {
-    
     return [
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.home),
         title: "Home",
         activeColorPrimary: Colors.black87,
         inactiveColorPrimary: Colors.white,
-         iconSize: 28,
-        textStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
-       
+        iconSize: 28,
+        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       ),
-   
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.support_agent),
         title: "Admin Chat",
         activeColorPrimary: Colors.black87,
         inactiveColorPrimary: Colors.white,
-         iconSize: 28,
-        textStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+        iconSize: 28,
+        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.notifications),
         title: "Notifications",
         activeColorPrimary: Colors.black87,
         inactiveColorPrimary: Colors.white,
-         iconSize: 28,
-        textStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+        iconSize: 28,
+        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
       ),
-       PersistentBottomNavBarItem(
+      PersistentBottomNavBarItem(
           icon: const Icon(Icons.handshake),
           title: "Social Media",
-           iconSize: 28,
-        textStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+          iconSize: 28,
+          textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           activeColorPrimary: Colors.black87,
           inactiveColorPrimary: Colors.white),
-          
     ];
   }
 
@@ -77,10 +71,7 @@ class _BottomNavBarWorkerState extends State<BottomNavBarWorker> {
       controller: _controller,
       navBarStyle: NavBarStyle.style1,
       popAllScreensOnTapOfSelectedTab: true,
-      backgroundColor:  const Color(0xFFBBA2BF),
-      
-      
-      
+      backgroundColor: const Color(0xFFBBA2BF),
     );
   }
 }

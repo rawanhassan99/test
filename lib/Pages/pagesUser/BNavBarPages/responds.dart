@@ -6,6 +6,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/Domain/listItem.dart';
 import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 import 'package:grad_proj/Pages/pagesWorker/workerInfo.dart';
 
@@ -130,7 +131,7 @@ class _RespondsState extends State<Responds> {
                       return ListItem(
                         worker: worker[itemCount],
                         pageIndex: 2,
-                         onPressed: () => navigateToPage3(context),
+                         onPressed: () => navigateToPage1(context,WorkerReview()),
                        
                       );
                     }),
@@ -140,6 +141,3 @@ class _RespondsState extends State<Responds> {
     );
   }
 }
-void navigateToPage3(BuildContext context) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
-  }

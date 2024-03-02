@@ -6,6 +6,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/Domain/listItem.dart';
 import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
 import 'package:grad_proj/Pages/pagesWorker/UserReview.dart';
 
 class HomeWorker extends StatelessWidget {
@@ -185,7 +186,7 @@ class HomeWorker extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 10),
                                 child: Image.asset("assets/images/Siren2.png"),
                               ),
-                              onPressed: () => navigateToPage6(context),
+                              onPressed: () => navigateToPage1(context,UserReview()),
                         pageIndex: 5);
                   },
                 ),
@@ -195,6 +196,3 @@ class HomeWorker extends StatelessWidget {
     );
   }
 }
-void navigateToPage6(BuildContext context) {
-       Navigator.push(context, MaterialPageRoute(builder: (context) => UserReview()));
-  }

@@ -3,18 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 import 'package:grad_proj/Domain/listItem.dart';
-import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
+
 import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 
-import 'package:grad_proj/Pages/pagesWorker/MenuWorker.dart';
-
 class History extends StatelessWidget {
-
- 
-
   List<Map<String, dynamic>> worker = [
     {
       "name": "Mohamed Ahmed",
@@ -25,8 +20,8 @@ class History extends StatelessWidget {
       "Review": "",
       "Rating": 4.4,
       "Date": DateTime(2024, 12, 31),
-       "Commission Fee":200,
-       "emergency": false
+      "Commission Fee": 200,
+      "emergency": false
     },
     {
       "name": "Nagy Ahmed",
@@ -37,8 +32,8 @@ class History extends StatelessWidget {
       "Description": "",
       "Review": "",
       "Date": DateTime(2024, 2, 15),
-       "Commission Fee":300,
-        "emergency": true
+      "Commission Fee": 300,
+      "emergency": true
     },
     {
       "name": "Ziad Ahmed",
@@ -49,8 +44,8 @@ class History extends StatelessWidget {
       "Description": "",
       "Review": "",
       "Date": DateTime(2024, 1, 10),
-       "Commission Fee":400,
-        "emergency": false
+      "Commission Fee": 400,
+      "emergency": false
     },
   ];
 
@@ -100,18 +95,18 @@ class History extends StatelessWidget {
                 left: 3,
                 top: 9,
                 child: IconButton(
-                    onPressed: () {
-                     //  Navigator.pushNamed(context, "/signup");
-                      Navigator.push(
-                                      context,
-                                       MaterialPageRoute(builder: (context)=>Menu())
-                                      );
-                    },
-                    icon: Icon(
-                      Icons.menu,
-                      color: Colors.white,
-                      size: 40,
-                    )),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Menu()),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+                ),
               ),
               //Mr. house word
               Positioned(
@@ -165,21 +160,31 @@ class History extends StatelessWidget {
                 right: 5,
                 left: 5,
                 bottom: 0,
-                child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  itemCount: recentWorkers.length,
-                  itemBuilder: (context, itemCount) {
-                 return ListItem(
-                worker: recentWorkers[itemCount],
-                trailingWidget: recentWorkers[itemCount]['emergency'] == true
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("assets/images/Siren.png"),): Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("assets/images/Siren2.png"),),
-                  onPressed: () => navigateToPage4(context),
-                pageIndex: 3); },
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    itemCount: recentWorkers.length,
+                    itemBuilder: (context, itemCount) {
+                      return ListItem(
+                        worker: recentWorkers[itemCount],
+                        trailingWidget: recentWorkers[itemCount]['emergency'] ==
+                                true
+                            ? Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Image.asset("assets/images/Siren.png"),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Image.asset("assets/images/Siren2.png"),
+                              ),
+                        onPressed: () =>
+                            navigateToPage1(context, WorkerReview()),
+                        pageIndex: 3,
+                      );
+                    },
+                  ),
                 ),
               ),
 
@@ -211,33 +216,38 @@ class History extends StatelessWidget {
                 right: 5,
                 left: 5,
                 bottom: 0,
-                child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  itemCount: previousRequests.length,
-                  itemBuilder: (context, itemCount) {
-                    return ListItem(
-                worker: previousRequests[itemCount],
-                trailingWidget: previousRequests[itemCount]['emergency'] == true
-              ? Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("assets/images/Siren.png"),): Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("assets/images/Siren2.png"),),
-                pageIndex: 3,
-                 onPressed: () => navigateToPage4(context),
-                       
-                ); },
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    itemCount: previousRequests.length,
+                    itemBuilder: (context, itemCount) {
+                      return ListItem(
+                        worker: previousRequests[itemCount],
+                        trailingWidget: previousRequests[itemCount]
+                                    ['emergency'] ==
+                                true
+                            ? Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Image.asset("assets/images/Siren.png"),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Image.asset("assets/images/Siren2.png"),
+                              ),
+                        pageIndex: 3,
+                        onPressed: () =>
+                            navigateToPage1(context, WorkerReview()),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
           ),
         ),
-       
-   ),
+      ),
     );
   }
 }
-void navigateToPage4(BuildContext context) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
-  }

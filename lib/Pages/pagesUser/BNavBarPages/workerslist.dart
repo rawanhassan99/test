@@ -141,7 +141,7 @@ class WorkersList extends StatelessWidget {
                     return ListItem(
                       worker: worker[itemCount],
                        pageIndex: 0,
-                        onPressed: () => navigateToPage1(context),
+                        onPressed: () => navigateToPage1(context,WorkerReview()),
                        
                     );
                   },
@@ -157,6 +157,7 @@ class WorkersList extends StatelessWidget {
 
 
 }
-void navigateToPage1(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
-  }
+
+  void navigateToPage1(BuildContext context, Widget page) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+}

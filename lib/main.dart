@@ -16,6 +16,7 @@ import 'package:grad_proj/Pages/pagesWorker/UserReview.dart';
 import 'package:grad_proj/Pages/pagesWorker/home.dart';
 import 'package:grad_proj/Pages/pagesWorker/login.dart';
 import 'package:grad_proj/Pages/pagesWorker/signup.dart';
+import 'package:grad_proj/Pages/welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       //  initialRoute: "/historyUser",
-      home: Login(),
+      home: HistoryWorker(),
       routes: {
          "/menu": (context) => Menu(),
         // "/reviewU": (context) => UserReview(),

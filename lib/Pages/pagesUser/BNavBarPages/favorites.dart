@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:grad_proj/Domain/listItem.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
 import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
 import 'package:grad_proj/Pages/pagesWorker/workerInfo.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
@@ -140,7 +141,7 @@ class Favorites extends StatelessWidget {
                   ),
                 )
   ,pageIndex: 1, 
-  onPressed: () => navigateToPage2(context),
+  onPressed: () => navigateToPage1(context,WorkerReview()),
 
               );
                   },
@@ -154,6 +155,3 @@ class Favorites extends StatelessWidget {
   }
   
 }
-void navigateToPage2(BuildContext context) {
-       Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerReview()));
-  }

@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/Pages/pagesUser/BNavBarPages/bottom.dart';
+import 'package:grad_proj/Domain/bottom.dart';
+
 import 'package:grad_proj/Pages/pagesUser/signup.dart';
 
 

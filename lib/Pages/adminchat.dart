@@ -24,7 +24,6 @@ class _AdminChatState extends State<AdminChat> {
     return Scaffold(
       body: Stack(
         children: [
-        
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -74,9 +73,11 @@ class _AdminChatState extends State<AdminChat> {
                         vertical: 8.0,
                       ),
                       child: Align(
-                        alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
+                        alignment:
+                            isMe ? Alignment.centerRight : Alignment.centerLeft,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30.0), // Adjust the value for more/less curvature
+                          borderRadius: BorderRadius.circular(
+                              30.0), // Adjust the value for more/less curvature
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 16.0,
@@ -101,41 +102,41 @@ class _AdminChatState extends State<AdminChat> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child:Row(
-  children: [
-    IconButton(
-      icon: const Icon(Icons.attach_file),
-      onPressed: () {
-        // Handle attachment logic
-      },
-    ),
-    IconButton(
-      icon: const Icon(Icons.camera_alt),
-      onPressed: () {
-        // Handle camera logic
-      },
-    ),
-    IconButton(
-      icon: const Icon(Icons.photo),
-      onPressed: () {
-        // Handle photo logic
-      },
-    ),
-IconButton(
-      icon: const Icon(Icons.mic),
-      onPressed: () {
-        // Handle recording logic
-      },
-    ),
-
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.attach_file),
+                      onPressed: () {
+                        // Handle attachment logic
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.camera_alt),
+                      onPressed: () {
+                        // Handle camera logic
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.photo),
+                      onPressed: () {
+                        // Handle photo logic
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.mic),
+                      onPressed: () {
+                        // Handle recording logic
+                      },
+                    ),
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Type a message...',
                           border: OutlineInputBorder(
-                           borderRadius: BorderRadius.circular(30.0),
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
                         ),
-                      ),),
+                      ),
                     ),
                     const SizedBox(width: 8.0),
                     ElevatedButton(
@@ -146,7 +147,8 @@ IconButton(
                         });
 
                         WidgetsBinding.instance.addPostFrameCallback((_) {
-                          final scrollController = PrimaryScrollController.of(context);
+                          final scrollController =
+                              PrimaryScrollController.of(context);
                           scrollController.animateTo(
                             scrollController.position.maxScrollExtent,
                             duration: const Duration(milliseconds: 300),

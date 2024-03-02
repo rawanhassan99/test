@@ -4,7 +4,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grad_proj/Domain/WokerBottomNavBar.dart';
 import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
+
+import 'package:grad_proj/Pages/pagesWorker/home.dart';
 
 
 class WorkerRequest extends StatefulWidget {
@@ -35,7 +38,7 @@ class _WorkerRequestState extends State<WorkerRequest> {
                 right: 0,
                 left: 0,
                 child: SvgPicture.asset(
-                  "assets/images/Rec that Contain menu icon &profile (1).svg",
+                  "assets/images/foregroundPurpleSmall.svg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -237,7 +240,8 @@ class _WorkerRequestState extends State<WorkerRequest> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ReqCategory()));
+                                      builder: (context) => 
+                                      BottomNavBarWorker()));
                               print('Create Post button pressed');
                             },
                             style: ElevatedButton.styleFrom(
