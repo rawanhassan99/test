@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grad_proj/Domain/CustomNabBar.dart';
 
 import 'package:grad_proj/Domain/listItem.dart';
 import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
@@ -11,6 +12,20 @@ import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
 
 class History extends StatelessWidget {
   List<Map<String, dynamic>> worker = [
+    {
+      "name": "Mohamed Ahmed",
+      "Type": "Air Conditioning Maintenance",
+      "pic": "assets/images/profile.png",
+      "Number": "0123456",
+      "Description": "skilled and professional technician",
+      "Review": "",
+      "Rating": 4.4,
+      "Date": DateTime(2024, 12, 31),
+      "Commission Fee": 200,
+      "emergency": false
+    },
+    
+    
     {
       "name": "Mohamed Ahmed",
       "Type": "Air Conditioning Maintenance",
@@ -34,6 +49,42 @@ class History extends StatelessWidget {
       "Date": DateTime(2024, 2, 15),
       "Commission Fee": 300,
       "emergency": true
+    },
+    {
+      "name": "Ziad Ahmed",
+      "Type": "Refrigerator Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 5.0,
+      "Number": "1237568",
+      "Description": "",
+      "Review": "",
+      "Date": DateTime(2024, 1, 10),
+      "Commission Fee": 400,
+      "emergency": false
+    },
+    {
+      "name": "Ziad Ahmed",
+      "Type": "Refrigerator Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 5.0,
+      "Number": "1237568",
+      "Description": "",
+      "Review": "",
+      "Date": DateTime(2024, 1, 10),
+      "Commission Fee": 400,
+      "emergency": false
+    },
+    {
+      "name": "Ziad Ahmed",
+      "Type": "Refrigerator Maintenance",
+      "pic": "assets/images/profile.png",
+      "Rating": 5.0,
+      "Number": "1237568",
+      "Description": "",
+      "Review": "",
+      "Date": DateTime(2024, 1, 10),
+      "Commission Fee": 400,
+      "emergency": false
     },
     {
       "name": "Ziad Ahmed",
@@ -72,70 +123,19 @@ class History extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> recentWorkers = getRecentWorkers();
     List<Map<String, dynamic>> previousRequests = getPreviousRequests();
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
     return SafeArea(
       child: Scaffold(
-        body: SizedBox(
-          width: double.infinity,
-          height: double.infinity,
-          child: Stack(
+        key: _scaffoldKey,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //purple foreground
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                child: SvgPicture.asset(
-                  "assets/images/foregroundPurpleSmall.svg",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              //Menu button
-              Positioned(
-                left: 3,
-                top: 9,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Menu()),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                ),
-              ),
-              //Mr. house word
-              Positioned(
-                top: 15,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: SvgPicture.asset("assets/images/MR. House.svg"),
-                ),
-              ),
-
-              //profile pic
-              Positioned(
-                right: 15,
-                top: 15,
-                child: CircleAvatar(
-                  radius: 25, // Adjust radius as needed
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
-              ),
-
-              SizedBox(
-                height: 35,
-              ),
-
-              //text recent
-              Positioned(
-                top: 145,
-                left: 6,
+              CustomAppBar(scaffoldKey: _scaffoldKey),
+              SizedBox(height: 50,),
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
                 child: Text(
                   "Recent:",
                   style: TextStyle(
@@ -153,45 +153,33 @@ class History extends StatelessWidget {
                   ),
                 ),
               ),
-
-              //Recent Workers List
-              Positioned(
-                top: 180,
-                right: 5,
-                left: 5,
-                bottom: 0,
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    itemCount: recentWorkers.length,
-                    itemBuilder: (context, itemCount) {
-                      return ListItem(
-                        worker: recentWorkers[itemCount],
-                        trailingWidget: recentWorkers[itemCount]['emergency'] ==
-                                true
-                            ? Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Image.asset("assets/images/Siren.png"),
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Image.asset("assets/images/Siren2.png"),
-                              ),
-                        onPressed: () =>
-                            navigateToPage1(context, WorkerReview()),
-                        pageIndex: 3,
-                      );
-                    },
-                  ),
-                ),
+              SizedBox(height: 10,),
+              ListView.builder(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: recentWorkers.length,
+                itemBuilder: (context, index) {
+                  final worker = recentWorkers[index];
+                  return ListItem(
+                    worker: worker,
+                    trailingWidget: worker['emergency'] == true
+                        ? Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Image.asset("assets/images/Siren.png"),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Image.asset("assets/images/Siren2.png"),
+                          ),
+                    onPressed: () => navigateToPage1(context, WorkerReview()),
+                    pageIndex: 3,
+                  );
+                },
               ),
-
-              //text
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.5,
-                left: 6,
+              SizedBox(height: 50,),
+              Padding(
+                padding: const EdgeInsets.only(left:8.0),
                 child: Text(
                   "Previous Requests:",
                   style: TextStyle(
@@ -209,45 +197,35 @@ class History extends StatelessWidget {
                   ),
                 ),
               ),
-
-              //Previous Requests List
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.55,
-                right: 5,
-                left: 5,
-                bottom: 0,
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    itemCount: previousRequests.length,
-                    itemBuilder: (context, itemCount) {
-                      return ListItem(
-                        worker: previousRequests[itemCount],
-                        trailingWidget: previousRequests[itemCount]
-                                    ['emergency'] ==
-                                true
-                            ? Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Image.asset("assets/images/Siren.png"),
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Image.asset("assets/images/Siren2.png"),
-                              ),
-                        pageIndex: 3,
-                        onPressed: () =>
-                            navigateToPage1(context, WorkerReview()),
-                      );
-                    },
-                  ),
-                ),
+                SizedBox(height: 10,),
+              ListView.builder(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: previousRequests.length,
+                itemBuilder: (context, index) {
+                  final worker = previousRequests[index];
+                  return ListItem(
+                    worker: worker,
+                    trailingWidget: worker['emergency'] == true
+                        ? Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Image.asset("assets/images/Siren.png"),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Image.asset("assets/images/Siren2.png"),
+                          ),
+                    onPressed: () => navigateToPage1(context, WorkerReview()),
+                    pageIndex: 3,
+                  );
+                },
               ),
             ],
           ),
         ),
       ),
     );
+  
   }
 }
