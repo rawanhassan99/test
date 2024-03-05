@@ -81,7 +81,7 @@ class _WorkerReviewState extends State<WorkerReview> {
                                   color: Colors.black87,
                                 ),
                               ),
-                              SizedBox(width: 150),
+                              SizedBox(width: 120),
                               Icon(
                                 Icons.favorite_border,
                                 color: Color(0xFFBBA2BF),
