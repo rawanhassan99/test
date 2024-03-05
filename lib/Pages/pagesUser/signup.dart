@@ -1,13 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/Domain/bottom.dart';
+import 'package:flutter_svg/svg.dart';
 
-
+import '../../Domain/bottom.dart';
+import '../../Domain/customAppBar.dart';
 
 class SignUpUser extends StatelessWidget {
-  const SignUpUser({super.key});
+  SignUpUser({super.key});
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class SignUpUser extends StatelessWidget {
           height: double.infinity,
           child: Stack(
             children: [
-              //purple foreground
+              // //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
