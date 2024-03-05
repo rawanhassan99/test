@@ -1,14 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:grad_proj/Domain/listItem.dart';
-import 'package:grad_proj/Pages/pagesUser/BNavBarPages/favorites.dart';
-import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
-import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
-import 'package:grad_proj/Pages/pagesWorker/workerInfo.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/BNavBarPages/workerslist.dart';
+
+import '../../../Domain/customAppBar.dart';
+import '../../../Domain/listItem.dart';
+import '../workerReview.dart';
 
 class Responds extends StatefulWidget {
   const Responds({Key? key}) : super(key: key);
@@ -39,58 +37,61 @@ class _RespondsState extends State<Responds> {
       "Review": ""
     },
   ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
+        appBar: CustomAppBar(scaffoldKey: _scaffoldKey,showSearchBox: true,),
         body: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
               //purple foreground
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                child: SvgPicture.asset(
-                  "assets/images/foregroundPurpleSmall.svg",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              //Menu button
-              Positioned(
-                left: 3,
-                top: 9,
-                child: IconButton(
-                    onPressed: () {
-                      // Navigator.pushNamed(context, "/signup");
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                      size: 40,
-                    )),
-              ),
-              //Mr. house word
-              Positioned(
-                top: 15,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: SvgPicture.asset("assets/images/MR. House.svg"),
-                ),
-              ),
-
-              //profile pic
-              Positioned(
-                right: 15,
-                top: 15,
-                child: CircleAvatar(
-                  radius: 25, // Adjust radius as needed
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
-              ),
+              // Positioned(
+              //   top: 0,
+              //   right: 0,
+              //   left: 0,
+              //   child: SvgPicture.asset(
+              //     "assets/images/foregroundPurpleSmall.svg",
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
+              // //Menu button
+              // Positioned(
+              //   left: 3,
+              //   top: 9,
+              //   child: IconButton(
+              //       onPressed: () {
+              //         // Navigator.pushNamed(context, "/signup");
+              //       },
+              //       icon: Icon(
+              //         Icons.arrow_back,
+              //         color: Colors.white,
+              //         size: 40,
+              //       )),
+              // ),
+              // //Mr. house word
+              // Positioned(
+              //   top: 15,
+              //   left: 0,
+              //   right: 0,
+              //   child: Center(
+              //     child: SvgPicture.asset("assets/images/MR. House.svg"),
+              //   ),
+              // ),
+              //
+              // //profile pic
+              // Positioned(
+              //   right: 15,
+              //   top: 15,
+              //   child: CircleAvatar(
+              //     radius: 25, // Adjust radius as needed
+              //     backgroundImage: AssetImage('assets/images/profile.png'),
+              //   ),
+              // ),
 
               SizedBox(
                 height: 35,
