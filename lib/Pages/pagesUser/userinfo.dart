@@ -2,11 +2,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
-import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/reqCategory.dart';
+import '../../Domain/customAppBar.dart';
 
 class Cutomerinfo extends StatefulWidget {
   const Cutomerinfo({Key? key}) : super(key: key);
@@ -16,60 +14,28 @@ class Cutomerinfo extends StatefulWidget {
 }
 
 class _CutomerinfoState extends State<Cutomerinfo> {
- 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
+        appBar: CustomAppBar(
+          scaffoldKey: _scaffoldKey,
+          showSearchBox: false,
+        ),
         body: SizedBox(
           width: double.infinity,
           height: double.infinity,
           child: Stack(
             children: [
-              // Purple foreground
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                child: SvgPicture.asset(
-                  "assets/images/foregroundPurpleSmall.svg",
-                  fit: BoxFit.cover,
-                ),
-              ),
-
-              // Menu button
-              Positioned(
-                top: 13,
-                child: IconButton(
-                  onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Menu()));
-                  },
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                ),
-              ),
-
-              // Mr. house word
-              Positioned(
-                top: 15,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: SvgPicture.asset("assets/images/MR. House.svg"),
-                ),
-              ),
-
-              // Profile Information Details
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.10,
                 left: 0,
                 right: 0,
                 child: Container(
-                  margin: const EdgeInsets.only(top: 15),
+                  margin: const EdgeInsets.only(top: 0),
                   child: Column(
                     children: [
                       // Profile Image
@@ -242,17 +208,7 @@ class _CutomerinfoState extends State<Cutomerinfo> {
           ),
         ),
 
-
         // FloatingActionButton
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-             Navigator.push(context, MaterialPageRoute(builder: (context) => ReqCategory()));
-          },
-          backgroundColor: const Color(0xFFBBA2BF),
-          shape: const CircleBorder(),
-          child: const Icon(Icons.add_chart_rounded),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }
