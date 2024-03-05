@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/userinfo.dart';
 
 import '../../Domain/customAppBar.dart';
 import '../../Domain/listItem.dart';
@@ -57,61 +58,11 @@ class HomeWorker extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
-        appBar: CustomAppBar(scaffoldKey: _scaffoldKey,showSearchBox: true,),
+        appBar: CustomAppBar(scaffoldKey: _scaffoldKey,showSearchBox: false,),
         body: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-              //purple foreground
-              // Positioned(
-              //   top: 0,
-              //   right: 0,
-              //   left: 0,
-              //   child: SvgPicture.asset(
-              //     "assets/images/foregroundPurpleSmall.svg",
-              //     fit: BoxFit.cover,
-              //   ),
-              // ),
-              // //Menu button
-              // Positioned(
-              //   left: 3,
-              //   top: 9,
-              //   child: IconButton(
-              //       onPressed: () {
-              //         // Navigator.push(
-              //         //                 context,
-              //         //                  MaterialPageRoute(builder: (context)=>Menu())
-              //         //                 );
-              //       },
-              //       icon: Icon(
-              //         Icons.menu,
-              //         color: Colors.white,
-              //         size: 40,
-              //       )),
-              // ),
-              // //Mr. house word
-              // Positioned(
-              //   top: 15,
-              //   left: 0,
-              //   right: 0,
-              //   child: Center(
-              //     child: SvgPicture.asset("assets/images/MR. House.svg"),
-              //   ),
-              // ),
-              //
-              // //profile pic
-              // Positioned(
-              //   right: 15,
-              //   top: 15,
-              //   child: CircleAvatar(
-              //     radius: 25, // Adjust radius as needed
-              //     backgroundImage: AssetImage('assets/images/profile.png'),
-              //   ),
-              // ),
-              //
-              // // SizedBox(
-              // //   height: 35,
-              // // ),
               Padding(
                 padding: const EdgeInsets.only(top: 5),
                 child: Container(
@@ -188,7 +139,7 @@ class HomeWorker extends StatelessWidget {
                                 padding: const EdgeInsets.only(right: 10),
                                 child: Image.asset("assets/images/Siren2.png"),
                               ),
-                              onPressed: () => navigateToPage1(context,UserReview()),
+                              onPressed: () => navigateToPage1(context,Cutomerinfo()),
                         pageIndex: 5);
                   },
                 ),
