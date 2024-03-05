@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/BNavBarPages/workerslist.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/history.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/reqEmergency.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/workerReview.dart';
+import 'package:the_proj_on_github/Pages/welcome.dart';
 
 import '../Domain/customAppBar.dart';
 
@@ -56,7 +61,8 @@ class Menu extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 30,
-                          backgroundImage: AssetImage('assets/images/profile.png'),
+                          backgroundImage:
+                              AssetImage('assets/images/profile.png'),
                         ),
                         SizedBox(height: 8),
                         Text(
@@ -84,11 +90,14 @@ class Menu extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.calendar_month_outlined),
                   title: const Text(
-                    'Reservations',
+                    'History',
                     style: TextStyle(color: Colors.white, fontSize: 13),
                   ),
                   onTap: () {
-                    // Handle reservations tap
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => History()),
+                    );
                   },
                 ),
                 const Divider(),
@@ -99,7 +108,10 @@ class Menu extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 13),
                   ),
                   onTap: () {
-                    // Handle emergency tap
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ReqEmergency()),
+                    );
                   },
                 ),
                 const Divider(),
@@ -128,15 +140,15 @@ class Menu extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(45),
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color.fromARGB(234, 0, 0, 0),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: const Text('Log Out'),
-                    onPressed: () {
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: const Color.fromARGB(234, 0, 0, 0),
+                        backgroundColor: Colors.white,
+                      ),
+                      child: Text('Log Out'),
+                      onPressed: () => navigateToPage1(context, Welcome())
                       // Handle log out button tap
-                    },
-                  ),
+
+                      ),
                 ),
               ],
             ),
