@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:grad_proj/Pages/pagesUser/login.dart';
-import 'package:grad_proj/Pages/pagesWorker/login.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:the_proj_on_github/Pages/pagesUser/login.dart';
+import 'package:the_proj_on_github/Pages/pagesWorker/login.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key});
@@ -11,6 +10,7 @@ class Welcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFBBA2BF),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -39,8 +39,7 @@ class Welcome extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => Login()),
+                              MaterialPageRoute(builder: (context) => Login()),
                             );
                           },
                           style: ElevatedButton.styleFrom(
@@ -50,7 +49,8 @@ class Welcome extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                'assets/images/userlogo.png', // Path to user 1 logo image
+                                'assets/images/userlogo.png',
+                                // Path to user 1 logo image
                                 height: 50,
                               ),
                               const Text('User'),
@@ -77,7 +77,8 @@ class Welcome extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                'assets/images/workerlogo.png', // Path to user 2 logo image
+                                'assets/images/workerlogo.png',
+                                // Path to user 2 logo image
                                 height: 50,
                               ),
                               const Text('Worker'),
