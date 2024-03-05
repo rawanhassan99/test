@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:grad_proj/Pages/pagesWorker/workerRequest.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:the_proj_on_github/Pages/pagesWorker/workerRequest.dart';
 
 
 class SignUpWorker extends StatelessWidget {
