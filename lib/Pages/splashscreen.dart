@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:grad_proj/Pages/welcome.dart';
-
-
-
+import 'package:the_proj_on_github/Pages/welcome.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const welcome(),
+        builder: (_) => const Welcome(),
       ));
     });
   }
@@ -38,6 +35,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFBBA2BF),
       body: Center(
         child: Image.asset('assets/images/logo.png'),
       ),
