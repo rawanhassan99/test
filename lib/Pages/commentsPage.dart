@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -34,18 +33,14 @@ class _CommentsPageState extends State<CommentsPage> {
     'assets/images/categories/woman2.png',
     'assets/images/categories/man3.png',
     'assets/images/categories/man4.png',
-
   ];
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: CustomAppBar(scaffoldKey: _scaffoldKey,
-          showSearchBox: false
-      ),
+      appBar: CustomAppBar(scaffoldKey: _scaffoldKey, showSearchBox: false),
       body: ListView(
         children: [
           SingleChildScrollView(
@@ -54,8 +49,10 @@ class _CommentsPageState extends State<CommentsPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const EditPost()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EditPost()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
@@ -190,17 +187,9 @@ class _CommentsPageState extends State<CommentsPage> {
           ),
         ],
       ),
-    floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ReqCategory()));
-        },
-        backgroundColor: const Color(0xFFBBA2BF),
-        shape: const CircleBorder(),
-        child: const Icon(Icons.add_chart_rounded),
+      drawer: Menu(
+        scaffoldKey: _scaffoldKey,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      drawer: Menu(scaffoldKey: _scaffoldKey,),
     );
   }
 }
