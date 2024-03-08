@@ -21,6 +21,7 @@ import 'package:grad_proj/Pages/pagesWorker/signup.dart';
 import 'package:grad_proj/Pages/splashscreen.dart';
 import 'package:grad_proj/Pages/pagesUser/toqaHistoryUser.dart';
 import 'package:grad_proj/Pages/welcome.dart';
+import 'package:grad_proj/req.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       create: (_) => UserProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: Req(),
       ),
     );
    

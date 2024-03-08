@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grad_proj/Domain/customAppBar.dart';
 import 'package:grad_proj/Pages/menu.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/responds.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
 import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
 import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
-
-
 
 class Req extends StatefulWidget {
   const Req({Key? key}) : super(key: key);
@@ -33,7 +32,7 @@ class _ReqState extends State<Req> {
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-           Center(
+              Center(
                 child: Stack(children: [
                   Container(
                     width: 330,
@@ -252,7 +251,7 @@ class _ReqState extends State<Req> {
                                 ),
                                 child: const Text('Book'),
                                 onPressed: () {
-                                  // Handle button tap
+                                  navigateToPage1(context, Responds());
                                 },
                               ),
                             ),
@@ -264,7 +263,7 @@ class _ReqState extends State<Req> {
                 ]),
               )
             ])),
-    floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const ReqCategory()));
@@ -274,7 +273,7 @@ class _ReqState extends State<Req> {
           child: const Icon(Icons.add_chart_rounded),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      drawer: Menu(
+        drawer: Menu(
           scaffoldKey: _scaffoldKey,
         ),
       ),

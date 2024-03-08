@@ -94,15 +94,15 @@ class _RespondsState extends State<Responds> {
               //   ),
               // ),
 
-              SizedBox(
-                height: 35,
-              ),
+              // SizedBox(
+              //   height: 35,
+              // ),
               //text
               Positioned(
                 top: 130,
                 left: 6,
                 child: Text(
-                  "Select one from responds:",
+                  "Choose one of the responses:",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
