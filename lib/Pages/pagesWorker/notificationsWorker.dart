@@ -2,7 +2,10 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../Domain/customAppBar.dart';
+import '../menu.dart';
 
 
 class alartsWorker extends StatelessWidget {
@@ -18,11 +21,14 @@ class alartsWorker extends StatelessWidget {
       "massege3": "We hope our serves helped you...",
     },
   ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
+        appBar: CustomAppBar(scaffoldKey: _scaffoldKey,showSearchBox: true,),
         body: Stack(
           children: [
             // Background Image
@@ -31,52 +37,9 @@ class alartsWorker extends StatelessWidget {
               child: Stack(
                 children: [
                   //purple foreground
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    left: 0,
-                    child: SvgPicture.asset(
-                      "assets/images/foregroundPurpleSmall.svg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  //Menu button
-                  Positioned(
-                    left: 3,
-                    top: 9,
-                    child: IconButton(
-                        onPressed: () {
-                          // Navigator.pushNamed(context, "/signup");
-                        },
-                        icon: const Icon(
-                          Icons.menu,
-                          color: Colors.white,
-                          size: 40,
-                        )),
-                  ),
-                  //Mr. house word
-                  Positioned(
-                    top: 15,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: SvgPicture.asset("assets/images/MR. House.svg"),
-                    ),
-                  ),
-
-                  //profile pic
-                  const Positioned(
-                    right: 15,
-                    top: 15,
-                    child: CircleAvatar(
-                      radius: 25, // Adjust radius as needed
-                      backgroundImage: AssetImage('assets/images/profile.png'),
-                    ),
-                  ),
-
                   //text
                   const Positioned(
-                    top: 110,
+                    top: 10,
                     left: 6,
                     child: Text(
                       "Today : ",
@@ -96,7 +59,7 @@ class alartsWorker extends StatelessWidget {
                     ),
                   ),
                   const Positioned(
-                    top: 250,
+                    top: 120,
                     left: 6,
                     child: Text(
                       "Suterday : ",
@@ -118,7 +81,7 @@ class alartsWorker extends StatelessWidget {
 
                   //Workers List
                   Positioned(
-                    top: 150,
+                    top: 40,
                     right: 5,
                     left: 5,
                     bottom: 0,
@@ -181,7 +144,7 @@ class alartsWorker extends StatelessWidget {
 
                   //Workers List
                   Positioned(
-                    top: 300,
+                    top: 160,
                     right: 5,
                     left: 5,
                     bottom: 0,
@@ -228,6 +191,7 @@ class alartsWorker extends StatelessWidget {
             ),
           ],
         ),
+        drawer: Menu(scaffoldKey: _scaffoldKey),
       ),
     );
   }

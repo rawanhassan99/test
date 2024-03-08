@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, library_private_types_in_public_api, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/Domain/CustomNabBar.dart';
-
-import 'package:grad_proj/Domain/listItem.dart';
-import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
-
-import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
+import 'package:grad_proj/Pages/pagesUser/toqaHistoryUser.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
+
+
+import '../../Domain/customAppBar.dart';
+import '../../Domain/listItem.dart';
+import '../menu.dart';
+import 'BNavBarPages/workerslist.dart';
 
 class History extends StatelessWidget {
   List<Map<String, dynamic>> worker = [
@@ -128,14 +128,13 @@ class History extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
+        appBar: CustomAppBar(scaffoldKey: _scaffoldKey,showSearchBox: false,),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppBar(scaffoldKey: _scaffoldKey),
-              SizedBox(height: 50,),
               Padding(
-                padding: const EdgeInsets.only(left: 8),
+                padding: const EdgeInsets.only(left: 8,top: 30),
                 child: Text(
                   "Recent:",
                   style: TextStyle(
@@ -172,7 +171,7 @@ class History extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 10),
                             child: Image.asset("assets/images/Siren2.png"),
                           ),
-                    onPressed: () => navigateToPage1(context, WorkerReview()),
+                    onPressed: () => navigateToPage1(context, WorkerHistoryPage()),
                     pageIndex: 3,
                   );
                 },
@@ -224,6 +223,7 @@ class History extends StatelessWidget {
             ],
           ),
         ),
+        drawer: Menu(scaffoldKey: _scaffoldKey,),
       ),
     );
   

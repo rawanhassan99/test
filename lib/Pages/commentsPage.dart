@@ -1,9 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:grad_proj/Pages/editPost.dart';
 
-import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
+
+
+import '../Domain/customAppBar.dart';
+import 'editPost.dart';
+import 'menu.dart';
 
 class CommentsPage extends StatefulWidget {
   const CommentsPage({super.key});
@@ -25,100 +27,32 @@ class _CommentsPageState extends State<CommentsPage> {
 
   //list for the profile pics of the users
   List<String> profilePic = [
-    // 'assets/images/man.jpg',
-    // 'assets/images/man3.jpg',
-    // 'assets/images/user.png',
-    // 'assets/images/user (1).png',
-    // 'assets/images/man.jpg',
-    // 'assets/images/man2.jpg',
-    'assets/images/profile.png',
-    'assets/images/profile.png',
-    'assets/images/profile.png',
-    'assets/images/profile.png',
-    'assets/images/profile.png',
-    'assets/images/profile.png',
+    'assets/images/categories/man.png',
+    'assets/images/categories/man2.png',
+    'assets/images/categories/woman.png',
+    'assets/images/categories/woman2.png',
+    'assets/images/categories/man3.png',
+    'assets/images/categories/man4.png',
   ];
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      appBar: CustomAppBar(scaffoldKey: _scaffoldKey, showSearchBox: false),
       body: ListView(
         children: [
-          // Top purple container with rounded border
-          Container(
-            padding: EdgeInsets.zero,
-            decoration: const BoxDecoration(
-              color: Color(0xFFBBA2BF),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-            ),
-            child: Stack(
-              children: [
-                //purple foreground with rounded border
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: SvgPicture.asset(
-                      "assets/images/foregroundPurpleSmall.svg",
-                      fit: BoxFit.cover,
-                      height: 90,
-                    ),
-                  ),
-                ),
-                //Menu button
-                Positioned(
-                  top: 13,
-                  child: IconButton(
-                    onPressed: () {
-                      // Navigator.push(context,
-                      // MaterialPageRoute(builder: (context) => Menu());
-                      // Scaffold.of(context).openEndDrawer();
-                      Navigator.pushNamed(context, "/menu");
-                    },
-                    icon: const Icon(
-                      Icons.menu,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                  ),
-                ),
-                //Mr. house word
-                Positioned(
-                  top: 30,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: SvgPicture.asset("assets/images/MR. House.svg"),
-                  ),
-                ),
-                // User profile avatar
-                const Positioned(
-                  right: 15,
-                  top: 15,
-                  child: CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage('assets/images/profile.png'),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
           SingleChildScrollView(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const EditPost()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EditPost()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
@@ -253,16 +187,9 @@ class _CommentsPageState extends State<CommentsPage> {
           ),
         ],
       ),
-    floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ReqCategory()));
-        },
-        backgroundColor: const Color(0xFFBBA2BF),
-        shape: const CircleBorder(),
-        child: const Icon(Icons.add_chart_rounded),
+      drawer: Menu(
+        scaffoldKey: _scaffoldKey,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grad_proj/Domain/customAppBar.dart';
 import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
 import 'package:grad_proj/pages/commentsPage.dart';
 import 'package:grad_proj/pages/createPost.dart';
@@ -16,76 +17,24 @@ class Posts extends StatefulWidget {
 }
 
 class _CreatePostState extends State<Posts> {
-  
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFFBBA2BF),
-          title: Text('Create Post'),
-          actions: [
-            IconButton(
-              
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => CreatePost()));
-                print('Create Post button pressed');
-              },
-              icon: Icon(Icons.add),
-            ),
-          ],
-        ),
+         key: _scaffoldKey,
+       
+        appBar: 
+          CustomAppBar(scaffoldKey: _scaffoldKey,showSearchBox: false,),
+         
+      
         body: SizedBox(
           width: double.infinity,
           height: double.infinity,
           child: Stack(
             children: [
-       //purple foreground
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                child: SvgPicture.asset(
-                  "assets/images/foregroundPurpleSmall.svg",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              //Menu button
-              Positioned(
-                left: 3,
-                top: 9,
-                child: IconButton(
-                    onPressed: () {
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => Menu()));
-                    },
-                    icon: Icon(
-                      Icons.menu,
-                      color: Colors.white,
-                      size: 40,
-                    )),
-              ),
-              //Mr. house word
-              Positioned(
-                top: 15,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: SvgPicture.asset("assets/images/MR. House.svg"),
-                ),
-              ),
-
-              //profile pic
-              Positioned(
-                right: 15,
-                top: 15,
-                child: CircleAvatar(
-                  radius: 25, // Adjust radius as needed
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
-              ),
-
+    
               SizedBox(
                 height: 35,
               ),

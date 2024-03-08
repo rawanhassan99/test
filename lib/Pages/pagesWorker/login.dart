@@ -1,12 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/Domain/WokerBottomNavBar.dart';
-
-
-
+import 'package:flutter_svg/svg.dart';
 import 'package:grad_proj/Pages/pagesWorker/signup.dart';
+
+
+import '../../Domain/WokerBottomNavBar.dart';
 
 class LoginWorker extends StatelessWidget {
   const LoginWorker({super.key});
@@ -181,7 +180,7 @@ class LoginWorker extends StatelessWidget {
                               'Don\'t have an account? ',
                               style: TextStyle(
                                 fontFamily: "Raleway",
-                                fontSize: 17,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

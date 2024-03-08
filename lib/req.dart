@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:grad_proj/Domain/customAppBar.dart';
+import 'package:grad_proj/Pages/menu.dart';
 import 'package:grad_proj/Pages/pagesUser/MenuUser.dart';
 import 'package:grad_proj/Pages/pagesUser/reqCategory.dart';
 
@@ -16,54 +18,22 @@ class Req extends StatefulWidget {
 class _ReqState extends State<Req> {
   final String _date = '';
   final String _time = '';
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: const Menu(),
+        key: _scaffoldKey,
+        appBar: CustomAppBar(
+          scaffoldKey: _scaffoldKey,
+          showSearchBox: true,
+        ),
         body: SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Stack(children: [
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: 300,
-                child: SvgPicture.asset(
-                  'assets/images/Rec that Contain menu icon &profile.svg',
-                  fit: BoxFit.fill,
-                ),
-              ),
-              Positioned(
-                top: 13,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 7,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: SvgPicture.asset('assets/images/MR. House.svg'),
-                ),
-              ),
-              const Positioned(
-                right: 15,
-                top: 15,
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
-              ),
-              Center(
+           Center(
                 child: Stack(children: [
                   Container(
                     width: 330,
@@ -304,6 +274,9 @@ class _ReqState extends State<Req> {
           child: const Icon(Icons.add_chart_rounded),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      drawer: Menu(
+          scaffoldKey: _scaffoldKey,
+        ),
       ),
     );
   }

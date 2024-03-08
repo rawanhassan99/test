@@ -1,14 +1,18 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grad_proj/Domain/bottom.dart';
-
+import 'package:flutter_svg/svg.dart';
 import 'package:grad_proj/Pages/pagesUser/signup.dart';
 
 
+import '../../Domain/bottom.dart';
+import '../../Domain/customAppBar.dart';
+
+
+
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +23,8 @@ class Login extends StatelessWidget {
           height: double.infinity,
           child: Stack(
             children: [
-              // Background Image
-              //purple foreground
+              // // Background Image
+              // //purple foreground
               Positioned(
                 top: 0,
                 right: 0,
@@ -173,37 +177,39 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 16),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Don\'t have an account? ',
-                              style: TextStyle(
-                                fontFamily: "Raleway",
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignUpUser()),
-                                );
-                              },
-                              child: Text(
-                                'Sign up',
+                        Flexible(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Don\'t have an account? ',
                                 style: TextStyle(
                                   fontFamily: "Raleway",
-                                  color: Color.fromARGB(255, 173, 148, 177),
-                                  fontSize: 17,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.underline,
                                 ),
                               ),
-                            ),
-                          ],
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SignUpUser()),
+                                  );
+                                },
+                                child: Text(
+                                  'Sign up',
+                                  style: TextStyle(
+                                    fontFamily: "Raleway",
+                                    color: Color.fromARGB(255, 173, 148, 177),
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

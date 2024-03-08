@@ -89,15 +89,15 @@ class _BottomNavBarUserState extends State<BottomNavBarUser> {
       context,
       screens: screens(),
       items: navBarItems(),
-      
+    //  popAllScreensOnTapAnyTabs: true,
+     
+      popAllScreensOnTapOfSelectedTab: false,
       controller: _controller,
       navBarStyle: NavBarStyle.style1,
-      popAllScreensOnTapOfSelectedTab: true,
+      
       backgroundColor:const Color.fromARGB(255, 173, 148, 177),   
       hideNavigationBarWhenKeyboardShows: true,
-      resizeToAvoidBottomInset: false,
-      
-      
+      resizeToAvoidBottomInset: false,   
       
     );
   }

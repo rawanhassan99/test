@@ -3,11 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grad_proj/Domain/CustomNabBar.dart';
+import 'package:grad_proj/Domain/customAppBar.dart';
 import 'package:grad_proj/Domain/listItem.dart';
+import 'package:grad_proj/Pages/menu.dart';
 import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
 import 'package:grad_proj/Pages/pagesUser/workerReview.dart';
-import 'package:grad_proj/Pages/pagesWorker/MenuWorker.dart';
+import 'package:grad_proj/Pages/pagesWorker/menu.dart';
 import 'package:grad_proj/Pages/pagesWorker/UserReview.dart';
+import 'package:grad_proj/Pages/pagesWorker/toqaHistoryWorker.dart';
 
 class HistoryWorker extends StatefulWidget {
   @override
@@ -132,7 +135,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
               CustomAppBar(scaffoldKey: _scaffoldKey),
               SizedBox(height: 50,),
               Padding(
-                padding: const EdgeInsets.only(left: 8),
+                padding: const EdgeInsets.only(left: 8,top: 30),
                 child: Text(
                   "Recent:",
                   style: TextStyle(
@@ -169,7 +172,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
                             padding: const EdgeInsets.only(right: 10),
                             child: Image.asset("assets/images/Siren2.png"),
                           ),
-                    onPressed: () => navigateToPage1(context, WorkerReview()),
+                    onPressed: () => navigateToPage1(context, UserHistoryPage()),
                     pageIndex: 3,
                   );
                 },
@@ -221,6 +224,7 @@ class _HistoryWorkerState extends State<HistoryWorker> {
             ],
           ),
         ),
+         drawer: Menu(scaffoldKey: _scaffoldKey,),
       ),
     );
    }
