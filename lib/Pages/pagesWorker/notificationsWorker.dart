@@ -3,6 +3,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:grad_proj/Pages/pagesUser/BNavBarPages/workerslist.dart';
+import 'package:grad_proj/Pages/pagesUser/toqaHistoryUser.dart';
+import 'package:grad_proj/Pages/pagesWorker/toqaHistoryWorker.dart';
 
 import '../../Domain/customAppBar.dart';
 import '../menu.dart';
@@ -128,8 +131,7 @@ class alartsWorker extends StatelessWidget {
                                       // Add onTap callback for the clickable text
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
-                                          // Handle the onTap action here
-                                          print('Show details clicked!');
+                                         navigateToPage1(context, UserHistoryPage());
                                         },
                                     ),
                                   ],
